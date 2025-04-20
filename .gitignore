@@ -1,0 +1,5 @@
+**/lib
+**/node_modules
+
+# osx
+.DS_Store

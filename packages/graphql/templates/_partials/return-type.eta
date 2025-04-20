@@ -1,0 +1,3 @@
+== <%= translate('returnType') %>
+
+`<%= helpers.xref.format(data.type) %>`

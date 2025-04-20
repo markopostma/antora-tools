@@ -1,0 +1,6 @@
+<%~ include('../_partials/doc-top', { ...it } ) %>
+<%~ include('../_partials/type-definition', { ...it } ) %>
+<%~ include('../_partials/fields', { ...it } ) %>
+<%~ include('../_partials/json-example', { ...it } ) %>
+<%~ include('../_partials/implementations', { ...it } ) %>
+<%~ include('../_partials/doc-footer', { ...it } ) %>

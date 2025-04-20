@@ -1,0 +1,25 @@
+<% if (data.fields?.length) { %>
+== <%= translate('fields') %>
+
+<% data.fields.filter(f => !f.isDeprecated).forEach(f => { %>
+=== <%= `\`${f.name}\`` %>
+
+<%= `\`${helpers.xref.format(f.type)}\`` %> <%= f.description ? `- ${f.description}` : '\n' %>
+
+<% if (f.args?.length) { %>
+**<%= translate('arguments') %>**
+<% f.args.forEach(a => { %>
+* <%= `\`${a.name}\`` %>
+<%= a.defaultValue 
+  ? `\`${helpers.xref.format(a.type)} = ${a.defaultValue}\`` 
+  : `\`${helpers.xref.format(a.type)}\`` %> 
+<%= a.description ? `- ${a.description}` : '' %>
+<% }) %>
+<% } %>
+<% }) %>
+
+<% data.fields.filter(f => f.isDeprecated).forEach(f => { %>
+=== <%= `\`[.line-through]#${f.name}#\`` %>
+<%= f.deprecationReason %>
+<% }) %>
+<% } %>

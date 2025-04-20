@@ -1,0 +1,6 @@
+<% if (data.possibleTypes?.length) { %>
+== <%= translate('possibleTypes') %>
+<% data.possibleTypes.forEach((f) => { %>
+* <%= helpers.xref.link(f) %>
+<% }) %>
+<% } %>

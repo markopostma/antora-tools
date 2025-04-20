@@ -1,0 +1,3 @@
+<%~ include('../_partials/doc-top', { ...it } ) %>
+<%~ include('../_partials/json-example', { ...it } ) %>
+<%~ include('../_partials/doc-footer', { ...it } ) %>

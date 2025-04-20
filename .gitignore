@@ -1,5 +1,8 @@
 **/lib
 **/node_modules
+**/build
+**/test-results
+**/playwright-report
 
 # osx
 .DS_Store

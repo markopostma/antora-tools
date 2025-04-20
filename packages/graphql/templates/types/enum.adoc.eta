@@ -1,0 +1,4 @@
+<%~ include('../_partials/doc-top', { ...it } ) %>
+<%~ include('../_partials/enum-values', { ...it } ) %>
+<%~ include('../_partials/type-definition', { ...it } ) %>
+<%~ include('../_partials/doc-footer', { ...it } ) %>

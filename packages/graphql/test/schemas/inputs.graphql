@@ -1,0 +1,19 @@
+"""
+Filter options used in xref:queries/users.adoc[] query.
+"""
+input UserFilter {
+  id: ID
+  fullName: String
+}
+
+input CreateProduct {
+  name: String!
+  price: Float!
+  brand: String!
+}
+
+input UpdateProduct {
+  name: String
+  price: Float
+  brand: String
+}

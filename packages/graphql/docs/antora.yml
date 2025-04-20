@@ -1,0 +1,7 @@
+name: antora-tools-graphql
+title: 'Antora tools GraphQL docs'
+start_page: index.adoc
+version: ~
+display_version: 0.9.0
+nav:
+  - modules/ROOT/nav.adoc

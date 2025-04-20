@@ -1,0 +1,12 @@
+= Tools
+:page-role: -toc
+:no-index:
+
+== <%= translate('downloads') %>
+
+[cols="10,^2"]
+|===
+<% data.downloads.forEach((d) => { %>
+| <%= d.link %> | <%= d.size %>
+<% }) %>
+|===

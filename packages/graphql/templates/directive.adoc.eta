@@ -1,0 +1,15 @@
+<%~ include('./_partials/doc-top', { ...it } ) %>
+<%~ include('./_partials/arguments', { ...it } ) %>
+
+<% if (data.locations?.length) { %>
+== <%= translate('locations') %>
+
+<% data.locations.forEach((location) => { %>
+- `<%= location %>`
+<% }) } %>
+
+== <%= translate('repeatable') %>
+
+`<%= data.isRepeatable %>`
+
+<%~ include('./_partials/doc-footer', { ...it } ) %>

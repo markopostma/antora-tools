@@ -1,0 +1,17 @@
+body.graphql-index article.doc > .index-page-group ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+@media only screen and (min-width: 768px) {
+  body.graphql-index article.doc > .index-page-group ul {
+    column-count: 2;
+    column-gap: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  body.graphql-index article.doc > .index-page-group ul {
+    column-count: 3;
+  }
+}

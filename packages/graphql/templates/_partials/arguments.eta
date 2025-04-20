@@ -1,0 +1,13 @@
+<% if (data.args?.length) { %>
+== <%= translate('arguments') %>
+
+<% data.args.filter(a => !a.isDeprecated).forEach(a => { %>
+=== <%= `\`${a.name}\`` %>
+
+<%= `\`${helpers.xref.format(a.type)}\`` %> <%= a.defaultValue ? `= \`${a.defaultValue}\`` : '' %> <%= a.description ? `- ${a.description}` : '\n' %>
+<% }) %>
+<% data.args.filter(a => a.isDeprecated).forEach(a => { %>
+=== <%= `\`[.line-through]#${a.name}#\`` %>
+<%= a.deprecationReason %>
+<% }) %>
+<% } %>

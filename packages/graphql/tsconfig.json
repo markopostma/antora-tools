@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node16",
+    "module": "Node16",
+    "noEmit": true,
+    "outDir": "./lib",
+    "resolveJsonModule": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "strict": true,
+    "target": "ES2022",
+    "typeRoots": ["node_modules/@types", "./@types"],
+    "lib": ["ES2022"]
+  },
+  "include": ["**/*.ts", "./eslint.config.mjs"],
+  "exclude": ["**/node_modules", "**/lib", "./docs"]
+}

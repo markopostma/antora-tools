@@ -1,0 +1,6 @@
+<% if (data.interfaces?.length) { %>
+== <%= translate('implementations') %>
+<% data.interfaces.forEach((i) => { %>
+- <%= helpers.xref.link(i) %>
+<% }) %>
+<% } %>

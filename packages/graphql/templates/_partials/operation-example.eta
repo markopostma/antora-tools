@@ -1,0 +1,8 @@
+<% if (data.codeExample) { %>
+== <%= translate('request') %>
+
+[,graphql]
+----
+<%= data.codeExample %>
+----
+<% } %>

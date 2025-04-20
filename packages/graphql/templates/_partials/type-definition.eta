@@ -1,0 +1,6 @@
+== <%= translate('definition') %>
+
+[,graphql]
+----
+<%= helpers.printType(data.serialized, { descriptions: false }) %>
+----

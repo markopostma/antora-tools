@@ -1,0 +1,14 @@
+= <%= data.title %>
+:page-role: graphql-index
+:noindex:
+
+<% if (helpers.notBlank(data.intro)) { %>
+[.lead]
+<%= data.intro %>
+<% } %>
+
+<% if (helpers.notBlank(data.indexPages)) { %>
+<%= data.indexPages %>
+<% } %>
+
+<%~ include('./_partials/doc-footer', { ...it, includeStyles: true } ) %>

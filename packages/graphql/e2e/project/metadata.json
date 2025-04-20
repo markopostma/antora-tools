@@ -1,0 +1,62 @@
+{
+  "OBJECT": {
+    "User": {
+      "fields": {
+        "firstName": {
+          "documentation": {
+            "example": "Hank"
+          }
+        },
+        "lastName": {
+          "documentation": {
+            "example": "van Dyk"
+          }
+        },
+        "fullName": {
+          "documentation": {
+            "example": "Hank van Dyk"
+          }
+        },
+        "email": {
+          "documentation": {
+            "example": "hank.vandyk@gmail.com"
+          }
+        }
+      }
+    },
+    "Product": {
+      "fields": {
+        "name": {
+          "documentation": {
+            "example": "A very nice product"
+          }
+        },
+        "soldItems": {
+          "documentation": {
+            "example": 1337
+          }
+        }
+      }
+    }
+  },
+  "SCALAR": {
+    "Email": {
+      "documentation": {
+        "example": "email@hostname.com"
+      }
+    },
+    "String": {
+      "documentation": {
+        "description": "Provide a different description",
+        "example": "Some other string :)..."
+      }
+    }
+  },
+  "ENUM": {
+    "MeasurementUnit": {
+      "documentation": {
+        "example": "METRIC"
+      }
+    }
+  }
+}

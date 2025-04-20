@@ -1,0 +1,9 @@
+"""
+Marks a field as experimental. It's considered unsafe to use the fields it applies to.
+"""
+directive @experimental(
+  """
+  Explains why this element is considered experimental, usually it states when it's expected to be stable and safe to use.
+  """
+  reason: String = "This feature is experimental"
+) on FIELD_DEFINITION | ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION | ENUM_VALUE

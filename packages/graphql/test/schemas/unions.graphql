@@ -1,0 +1,4 @@
+"""
+Entity `union` description.
+"""
+union Entity = Company | User | Product

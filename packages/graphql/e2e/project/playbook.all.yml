@@ -1,0 +1,42 @@
+site:
+  title: Integration test
+  start_page: antora-tools-graphql::index.adoc
+antora:
+  extensions:
+    - require: '@antora-tools/graphql'
+      components:
+        - strategy: FILE
+          location: '../../test/schemas/*.graphql'
+          name: strategy-file
+          title: FILE
+          meta_file: './metadata.json'
+          intro: |
+            Welcome to the **GraphQL Demo** pages. This *intro* is mainly a demo of adoc elements.
+
+            WARNING: This component uses the **FILE** strategy.
+
+            [,http]
+            .API ENDPOINT
+            ----
+            POST https://somehost.com/graphql
+            ----
+        - strategy: URL
+          location: 'https://markopostma.github.io/antora-docs/graphql-demo/_attachments/schema.graphql'
+          name: strategy-url
+          title: URL
+          intro: >
+            WARNING: This component uses the **URL** strategy.
+        - strategy: INTROSPECTION
+          location: 'https://spacex-production.up.railway.app'
+          name: strategy-introspection
+          title: INTROSPECTION
+          locale: nl
+          intro: >
+            WARNING: This component uses the **INTROSPECTION** strategy.
+content:
+  sources:
+    - url: ../..
+      start_path: docs
+ui:
+  bundle:
+    url: ./ui-bundle.zip

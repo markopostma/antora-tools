@@ -1,0 +1,9 @@
+<% if (helpers.notBlank(data.codeExample)) { %>
+== <%= translate('example') %>
+
+[,json]
+.<%= data.name %>.json
+----
+<%= data.codeExample %>
+----
+<% } %>

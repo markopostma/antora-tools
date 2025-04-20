@@ -1,0 +1,8 @@
+<% if (data.enumValues?.length) { %>
+== <%= translate('enumValues') %>
+
+<% data.enumValues.forEach(enumValue => { %>
+* <%= `\`${enumValue.name}\`` %>
+<%= helpers.notBlank(enumValue.description) ? enumValue.description  : '' %>
+<% }) %>
+<% } %>

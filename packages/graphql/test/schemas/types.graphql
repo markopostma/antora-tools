@@ -1,0 +1,49 @@
+"""
+Object type `User`.
+"""
+type User implements ContactInfo {
+  id: ID!
+  fullName: String
+  dateOfBirth: Date!
+  products: [Product!]!
+  height(
+    unit: MeasurementUnit! = METRIC
+    roundUp: Boolean = false
+    printUnit: [Boolean!]
+    anotherArg: [Float!]! = [1.99]
+  ): Float
+  employer: Company
+  email: [Email!]!
+  emailConfirmed: Boolean!
+  fax: String @deprecated(reason: "fax is deprecated, nobody uses it anymore.")
+}
+
+type Company implements ContactInfo {
+  employees: [User]!
+  alias: [String!]!
+  email: [Email!]!
+  emailConfirmed: Boolean!
+  belongsTo: Entity
+}
+
+"""
+Commonly used type.
+"""
+type Product {
+  """
+  Official name of the product.
+  """
+  name: String
+  dueDate: Date
+  """
+  Prices in euros
+  """
+  price: [Float]
+  """
+  Number of sold items.
+  """
+  soldItems: Int
+  releaseDate: Date
+  unit: MeasurementUnit
+  releasedAt: Date @deprecated(reason: "releasedAt is deprecated, use releaseDate instead.")
+}

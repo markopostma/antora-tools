@@ -1,0 +1,10 @@
+"""
+Enumerator used for unit measurement determination.
+"""
+enum MeasurementUnit {
+  IMPERIAL
+  """
+  For the winners.
+  """
+  METRIC
+}

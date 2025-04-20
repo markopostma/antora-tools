@@ -1,0 +1,47 @@
+type Query {
+  """
+  Search for products.
+  """
+  search(query: String!): [Product]! @deprecated(reason: "Is no longer useful.")
+  """
+  Fetch all products.
+  """
+  products: [Product!]!
+  """
+  Fetch a single xref:types/OBJECT/Product.adoc[].
+  """
+  product(id: ID!): Product
+  """
+  Search users.
+  """
+  users(filter: UserFilter! = {}): [User]!
+  """
+  Fetch a single xref:types/OBJECT/User.adoc[].
+  """
+  user(
+    """
+    Unique identifier of the user.
+    """
+    id: ID!
+  ): User
+  """
+  Query the xref:types/UNION/Entity.adoc[] union.
+  """
+  entities: [Entity] @experimental(reason: "This query is experimental.")
+}
+
+type Mutation {
+  """
+  Create a Product.
+  """
+  create(product: CreateProduct!): ID
+  update(product: UpdateProduct!): Product
+  delete(id: ID!): Boolean
+}
+
+type Subscription {
+  """
+  Search a Product.
+  """
+  search(query: String!): [Product]
+}

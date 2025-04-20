@@ -1,0 +1,5 @@
+<%~ include('../_partials/doc-top', { ...it } ) %>
+<%~ include('../_partials/type-definition', { ...it } ) %>
+<%~ include('../_partials/input-fields', { ...it } ) %>
+<%~ include('../_partials/json-example', { ...it } ) %>
+<%~ include('../_partials/doc-footer', { ...it } ) %>

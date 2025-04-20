@@ -1,0 +1,24 @@
+site:
+  title: Integration test
+antora:
+  extensions:
+    - require: '@antora-tools/graphql'
+      strategy: FILE
+      location: '../../test/schemas/*.graphql'
+      meta_file: './metadata.json'
+      log_level: trace
+      intro: |
+        Welcome to the **GraphQL Demo** pages. This *intro* is mainly a demo of adoc elements.
+
+        [,http]
+        .API ENDPOINT
+        ----
+        POST https://somehost.com/graphql
+        ----
+content:
+  sources:
+    - url: ../..
+      start_path: docs
+ui:
+  bundle:
+    url: ./ui-bundle.zip

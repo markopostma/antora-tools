@@ -1,0 +1,13 @@
+"""
+Basic generic contact information.
+"""
+interface ContactInfo {
+  """
+  A valid email.
+  """
+  email: [Email!]!
+  """
+  If the confirmation email has been sent and confirmed this will return `true`.
+  """
+  emailConfirmed: Boolean!
+}

@@ -1,0 +1,5 @@
+<%~ include('../_partials/doc-top', { ...it } ) %>
+<%~ include('../_partials/return-type', { ...it } ) %>
+<%~ include('../_partials/arguments', { ...it } ) %>
+<%~ include('../_partials/operation-example', { ...it, operationType: 'subscription' } ) %>
+<%~ include('../_partials/doc-footer', { ...it } ) %>

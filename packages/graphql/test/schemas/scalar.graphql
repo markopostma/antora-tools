@@ -1,0 +1,9 @@
+"""
+`Date` scalar type represents a xref:types/SCALAR/String.adoc[] in link:https://www.rfc-editor.org/rfc/rfc3339[RFC3339] format.
+"""
+scalar Date
+
+"""
+`Email` scalar type represents a valid email in `mail@host.com` format.
+"""
+scalar Email

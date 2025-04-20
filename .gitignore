@@ -1,8 +1,16 @@
 **/lib
-**/node_modules
+**/dist
 **/build
-**/test-results
-**/playwright-report
+**/node_modules
+**/coverage
+*.tgz
 
 # osx
 .DS_Store
+
+# vscode
+**/.vscode
+**/test-results/
+**/playwright-report/
+**/blob-report/
+**/playwright/.cache/

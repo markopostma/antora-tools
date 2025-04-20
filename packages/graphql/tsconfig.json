@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -12,6 +13,7 @@
     "sourceMap": false,
     "strict": true,
     "target": "ES2022",
+    "rootDir": ".",
     "typeRoots": ["node_modules/@types", "./@types"],
     "lib": ["ES2022"]
   },

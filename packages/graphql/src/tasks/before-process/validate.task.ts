@@ -18,11 +18,11 @@ export class ValidateTask extends BaseTask {
   }
 
   private validate() {
-    const { assertEnum, assertString, assertExtraProps } = this;
+    const { assertEnum, assertString, assertStrictProps } = this;
     const optional = this.optional.bind(this);
     const validations: Validation[] = [
       // Strict property checking
-      assertExtraProps(this.config),
+      assertStrictProps.call(this, ValidateTask.WHITE_LIST),
       // Mandatory
       assertString('location', this.config.location, 1),
       assertEnum('strategy', this.config.strategy, Strategy),
@@ -91,27 +91,12 @@ export class ValidateTask extends BaseTask {
     } satisfies Validation;
   }
 
-  private assertExtraProps(config: Config) {
-    const {
-      displayVersion,
-      headers,
-      ignore,
-      includeStyles,
-      intro,
-      locale,
-      location,
-      logLevel,
-      metaFile,
-      name,
-      strategy,
-      title,
-      version,
-      ...rest
-    } = config;
+  private assertStrictProps(props: string[]) {
+    const extraProps = Object.keys(this.config).filter((key) => !props.includes(key));
 
     return {
-      valid: Object.keys(rest).length === 0,
-      message: `Config has unexpected properties: ${Object.keys(rest).join(', ')}`,
+      valid: extraProps.length === 0,
+      message: `Config has unexpected properties: ${extraProps.join(', ')}`,
     } satisfies Validation;
   }
 
@@ -128,4 +113,20 @@ export class ValidateTask extends BaseTask {
       string: (min?: number) => (notNull ? assertString(prop, value as string, min) : validation),
     } as const;
   }
+
+  private static readonly WHITE_LIST = [
+    'displayVersion',
+    'headers',
+    'ignore',
+    'includeStyles',
+    'intro',
+    'locale',
+    'location',
+    'logLevel',
+    'metaFile',
+    'name',
+    'strategy',
+    'title',
+    'version',
+  ] satisfies Array<keyof Config>;
 }

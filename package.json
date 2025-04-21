@@ -7,7 +7,8 @@
   "scripts": {
     "build": "npm run build --workspaces",
     "clean": "rimraf packages/**/lib",
-    "dev": "npm run build --workspaces --if-present"
+    "dev": "npm run build --workspaces --if-present",
+    "test": "npm test --workspaces"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

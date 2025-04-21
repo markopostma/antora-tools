@@ -1,13 +1,13 @@
-name: '@antora-tools/graphql'
+name: '@antora-tools/typedoc'
 
 on:
   push:
     paths:
-      - 'packages/graphql/**'
+      - 'packages/typedoc/**'
     branches: [main]
   pull_request:
     paths:
-      - 'packages/graphql/**'
+      - 'packages/typedoc/**'
     branches: [main]
 jobs:
   build:
@@ -26,6 +26,6 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run lint
-        working-directory: ./packages/graphql
+        working-directory: ./packages/typedoc
       - run: npm test
-        working-directory: ./packages/graphql
+        working-directory: ./packages/typedoc

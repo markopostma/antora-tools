@@ -2,9 +2,9 @@
   "name": "@antora-tools/typedoc",
   "version": "0.1.0",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "watch": "tsc -p tsconfig.json --watch"
+    "build": "tsx ../../scripts/build.ts -p .",
+    "lint": "npx eslint ./src ./test --quiet",
+    "test": "npx jest --testPathPattern=test/"
   }
 }

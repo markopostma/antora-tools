@@ -9,11 +9,8 @@
     "url": "https://github.com/markopostma"
   },
   "scripts": {
-    "build": "tsx scripts/build.ts",
-    "watch": "tsx scripts/build.ts -w",
+    "build": "tsx ../../scripts/build.ts -p .",
     "lint": "npx eslint ./src ./test ./e2e/*.spec.ts --quiet",
-    "prebuild": "npx rimraf ./lib",
-    "prepublishOnly": "npm run lint && npm run build",
     "test:e2e": "npx playwright test",
     "test": "npx jest --testPathPattern=test/",
     "serve": "tsx scripts/serve.ts",

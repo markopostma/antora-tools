@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'packages/graphql/**'
+      - '.github/workflows/graphql-test.yml'
     branches: [main]
   pull_request:
     paths:

@@ -73,7 +73,7 @@ function getOptions() {
       },
       logLevel: {
         type: 'string',
-        default: 'verbose',
+        default: 'warning',
       },
       root: {
         type: 'string',

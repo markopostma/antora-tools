@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'packages/graphql/**'
+      - '.github/workflows/graphql-e2e.yml'
     branches: [main]
   pull_request:
     paths:

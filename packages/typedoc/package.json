@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "tsx ../../scripts/build.ts",
+    "clean": "npx rimraf ./lib",
     "lint": "npx eslint ./src ./test --quiet",
     "test": "npx jest --testPathPattern=test/"
   },

@@ -6,8 +6,7 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "clean": "npx rimraf packages/**/lib",
-    "dev": "npm run build -- -w",
+    "clean": "npm run clean --workspaces --if-present",
     "test": "npm test --workspaces"
   },
   "devDependencies": {

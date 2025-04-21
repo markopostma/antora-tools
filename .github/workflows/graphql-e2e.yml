@@ -1,4 +1,4 @@
-name: E2E @antora-tools/graphql
+name: E2E packages/graphql
 on:
   push:
     paths:

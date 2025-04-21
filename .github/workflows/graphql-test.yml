@@ -1,4 +1,4 @@
-name: Test @antora-tools/graphql
+name: TEST packages/graphql
 
 on:
   push:

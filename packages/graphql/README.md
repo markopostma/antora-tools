@@ -1,5 +1,8 @@
 # @antora-tools/graphql
 
+![@antora-tools/graphql TEST](https://github.com/markopostma/antora-tools/actions/workflows/graphql-test.yml/badge.svg?branch=main)
+![@antora-tools/graphql E2E](https://github.com/markopostma/antora-tools/actions/workflows/graphql-e2e.yml/badge.svg?branch=main)
+
 An extension for Antora to add pages extracted from a GraphQL schema.
 
 ## Demo
@@ -35,7 +38,9 @@ antora:
           location: 'https://host.com/graphql'
 ```
 
-Now determine a **strategy**. Currently `FILE`, `URL` and `INTROSPECTION` are supported. To determine a strategy:
+### Determine a strategy
+
+Currently `FILE`, `URL` and `INTROSPECTION` are supported. To determine a strategy:
 
 1. Use **`FILE`** when a GraphQL schema is accessible locally. Expects a _relative_ path to one or more schema files. For example: `./relative-path-to/schema.graphql` or `./relative-path-to/*.graphql`.
 2. Use **`URL`** when a GraphQL schema is accessible remotely via **HTTP** by POST or GET. Expects an _URL_ to an endpoint that serves a `.graphql` file. For example: `https://somehost.com/schema.graphql` or `https://somehost.com/schema`.
@@ -191,11 +196,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 #### Added
 
-- Support for "multi-config" to register multiple components simultaneously ([More info](#enable)).
+- Support for "multi-config" to register multiple components simultaneously.
 
 #### Removed
 
-- Removed redundant `config.api_endpoint`.
+- Removed redundant `config.api_endpoint`. Use `config.intro` if you want to add asciidoc text to the index page.
 
 ### [0.8.0] - 2025-04-14
 

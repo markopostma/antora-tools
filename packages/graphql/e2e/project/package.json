@@ -8,7 +8,6 @@
     "serve": "npx http-server ./build/site"
   },
   "dependencies": {
-    "@antora-tools/graphql": "file:../../",
-    "antora": "^3.1.10"
+    "@antora-tools/graphql": "file:../../"
   }
 }

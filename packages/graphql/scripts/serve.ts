@@ -61,7 +61,7 @@ class Serve {
     this.busy(true);
 
     for (const task of [
-      this.runCommand('tsx ./scripts/build.ts'),
+      this.runCommand('npm run build'),
       this.runCommand(`cd ./e2e/project && npx antora ${this.getOptions().playbook}`),
     ]) {
       const messages = await task.then(({ stderr, stdout }) => [stderr, stdout].filter(Boolean));
@@ -73,10 +73,7 @@ class Serve {
   }
 
   private async clean() {
-    for (const dir of [resolve('.'), resolve('./e2e/project')]) {
-      await this.runCommand(`npm run prebuild --prefix ${dir}`);
-      this.logger.trace(format('Cleaned %s', dir));
-    }
+    await this.runCommand('npm run clean');
   }
 
   private runCommand(command: string) {

@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsx scripts/build.ts",
+    "build": "tsx ../../scripts/build.ts -p .",
     "lint": "npx eslint ./src ./test --quiet",
-    "test": "npx jest --testPathPattern=test/",
-    "watch": "npm run build -- -w"
+    "test": "npx jest --testPathPattern=test/"
   }
 }

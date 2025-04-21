@@ -1,1 +1,4 @@
-* xref:index.adoc[]
+.Getting started
+* xref:installation.adoc[]
+* xref:quickstart.adoc[]
+* xref:configuration.adoc[]

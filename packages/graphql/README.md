@@ -6,9 +6,6 @@ An extension for Antora to add pages extracted from a GraphQL schema.
 
 Visit [this url](https://markopostma.github.io/antora-docs/graphql-demo) for a demo hosted on `Github Pages`.
 
-![](https://github.com/markopostma/antora-gql/actions/workflows/test.yml/badge.svg?branch=main)
-![](https://github.com/markopostma/antora-gql/actions/workflows/e2e.yml/badge.svg?branch=main)
-
 ## Installation
 
 ```bash
@@ -25,17 +22,17 @@ antora:
       location: <String>
 ```
 
-Or with multiple configurations:
+Or you can supply multiple configurations, for example:
 
 ```yml
 antora:
   extensions:
     - require: '@antora-tools/graphql'
       components:
-        - strategy: <Strategy>
-          location: <String>
-        - strategy: <Strategy>
-          location: <String>
+        - strategy: FILE
+          location: 'my-types.graphql'
+        - strategy: INTROSPECTION
+          location: 'https://host.com/graphql'
 ```
 
 Now determine a **strategy**. Currently `FILE`, `URL` and `INTROSPECTION` are supported. To determine a strategy:

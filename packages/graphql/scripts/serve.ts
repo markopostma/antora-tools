@@ -61,7 +61,7 @@ class Serve {
     this.busy(true);
 
     for (const task of [
-      this.runCommand('tsx scripts/build.ts'),
+      this.runCommand('tsx ./scripts/build.ts'),
       this.runCommand(`cd ./e2e/project && npx antora ${this.getOptions().playbook}`),
     ]) {
       const messages = await task.then(({ stderr, stdout }) => [stderr, stdout].filter(Boolean));
@@ -85,6 +85,9 @@ class Serve {
         if (err) reject(err);
         else resolve({ stdout, stderr });
       });
+    }).catch((error) => {
+      this.logger.error(error);
+      return { stderr: error, stdout: undefined };
     });
   }
 

@@ -35,8 +35,8 @@ antora:
             WARNING: This component uses the **INTROSPECTION** strategy.
 content:
   sources:
-    - url: ../..
-      start_path: docs
+    - url: ../../../..
+      start_path: packages/graphql/docs
 ui:
   bundle:
     url: ./ui-bundle.zip

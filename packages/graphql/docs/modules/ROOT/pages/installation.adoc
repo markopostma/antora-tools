@@ -1,0 +1,42 @@
+= Installation
+
+[.lead]
+The Antora GraphQL Extension is distributed as an npm package, making it easy to integrate into any Node.js-based documentation workflow — whether you're working in a standalone Antora site or a monorepo with multiple extensions.
+
+[TIP,caption="Prerequisites"]
+====
+- [x] Node.js v20^+^
+- [x] Antora installed (locally or globally)
+- [x] Access to a *valid* GraphQL schema (.graphql) or graphQL endpoint that supports link:https://graphql.org/learn/introspection/[introspection,window=_blank].
+====
+
+== Install via npm
+
+In your Antora project directory (or the root of your monorepo):
+
+[source,bash]
+----
+npm install --save-dev @antora-tools/graphql
+----
+
+== Install via yarn
+
+[source,bash]
+----
+yarn add -D @antora-tools/graphql
+----
+
+This will install the extension as a dev dependency.
+
+== Using Workspaces or a Monorepo?
+
+If you're using an link:https://docs.npmjs.com/cli/v8/using-npm/workspaces[npm workspace,window=_blank], you can add the extension to a specific workspace, like so:
+
+[source,bash]
+----
+npm install --workspace packages/docs @antora-tools/graphql --save-dev
+----
+
+== What's next?
+
+Read more on the xref:quickstart.adoc[] page.

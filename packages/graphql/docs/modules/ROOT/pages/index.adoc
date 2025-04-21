@@ -1,3 +1,77 @@
-= Getting started
+= @antora-tools/graphql
+:page-role: -toc
 
-Welcome and thank you for choosing **@antora-tools/graphql**.
+[discrete]
+= Auto-Generate API Docs from a Schema or an IntrospectionQuery.
+
+[.lead]
+**The Antora GraphQL Extension transforms your GraphQL schema or introspection query into clear, navigable, and beautifully integrated API docs—right inside your Antora site.**
+
+Whether you're managing a rapidly evolving API or just want to keep docs close to your code, this extension bridges the gap between your schema and your documentation, making it a lot easier to keep things in sync.
+
+== Features
+
+- [x] Supports both **.graphql schema loading** and handling of **IntrospectionQuery**.
+- [x] Generates in-memory `.adoc` documents using your existing Antora pipeline.
+- [x] Nifty auto generated **query** and **response** examples.
+- [x] You're able to enrich code examples and documentation.
+- [x] Easy to configure and customize 🛠
+
+== Code snippets
+
+=== Type definition
+
+.type-definition.graphql
+[source,graphql]
+----
+type Product {
+  name: String
+  dueDate: Date
+  price: [Float]
+  soldItems: Int
+  releaseDate: Date
+  unit: MeasurementUnit
+  releasedAt: Date @deprecated(reason: "releasedAt is deprecated, use releaseDate instead.")
+}
+----
+
+=== Query
+
+.product-query.graphql
+[source,graphql]
+----
+query product($id: ID!) {
+  product(id: $id) {
+    name
+    dueDate
+    price
+    soldItems
+    releaseDate
+    unit
+    releasedAt
+  }
+}
+----
+
+=== JSON
+
+.product.json
+[source,json]
+----
+{
+  "name": "A very nice product",
+  "dueDate": "01-01-1970",
+  "price": [123.45],
+  "soldItems": 1337,
+  "releaseDate": "01-01-1970",
+  "unit": "METRIC",
+  "releasedAt": "01-01-1970"
+}
+----
+
+'''
+
+.What's next?
+****
+First things first, how to install? - read more on the xref:installation.adoc[] page.
+****

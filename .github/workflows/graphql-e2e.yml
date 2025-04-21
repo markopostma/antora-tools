@@ -1,4 +1,4 @@
-name: E2E-tests
+name: E2E @antora-tools/graphql
 on:
   push:
     branches: [main]
@@ -14,13 +14,16 @@ jobs:
         with:
           node-version: lts/*
       - name: Install dependencies
-        run: npm ci && npm ci --prefix e2e/project
+        run: npm ci && npm ci --prefix packages/graphql
       - name: Build
         run: npm run build
+        working-directory: ./packages/graphql
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
+        working-directory: ./packages/graphql
       - name: Run E2E tests
         run: npm run test:e2e
+        working-directory: ./packages/graphql
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:

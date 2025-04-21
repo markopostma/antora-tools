@@ -1,0 +1,51 @@
+= Quickstart
+
+This guide walks you through enabling the extension and generating your first set of GraphQL API docs from a schema or introspection query.
+
+== Enable
+
+=== For a single project
+
+[source,yml]
+.Single project configuration
+----
+antora:
+  extensions:
+    - require: '@antora-tools/graphql'
+      strategy: <Strategy>
+      location: <String>
+----
+
+=== For multiple projects
+
+[source,yml]
+.Multi project configuration
+----
+antora:
+  extensions:
+    - require: '@antora-tools/graphql'
+      components:
+        - strategy: FILE 
+          location: 'my-types.graphql'
+        - strategy: INTROSPECTION
+          location: 'https://host.com/graphql'
+        - strategy: URL
+          location: 'https://host.com/schema.graphql'
+          version: '1.0.0'
+----
+This allows you to provide an array of components. Mixing up different strategies is not supposed to be a problem. Each component has it's own dedicated configuration set.
+
+== Generation
+
+With the extension enabled the time has come to build the Antora project with the new settings. 
+
+[source,bash]
+----
+npx antora {your-playbook}.yml
+----
+
+If all went well, the result should be something as:
+
+  Generated 34 pages in 123ms
+
+== What's next? 🚀

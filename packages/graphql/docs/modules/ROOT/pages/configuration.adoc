@@ -1,0 +1,19 @@
+= Configuration
+
+| Key                 |    Type    | Description                                                                     
+| :------------------ | :--------: | :------------------------------------------------------------------------------ |
+| **strategy**\*      |  `string`  | Allowed values: `FILE`, `URL` or `INTROSPECTION`.                               |
+| **location**\*      |  `string`  | Location for provided strategy. [More info](#location)                          |
+| **name**            |  `string`  | Name for the component in lowercasing. **Default**: `'graphql'`.                |
+| **title**           |  `string`  | Title for the component. **Default**: `'GraphQL Api Docs'`.                     |
+| **intro**           |  `string`  | Text to display on the index page. Supports asciidoc.                           |
+| **meta_file**       |  `string`  | Local path to a file containing extra meta data. [More info](#meta_file)        |
+| **version**         |  `string`  | Version of the component.                                                       |
+| **display_version** |  `string`  | Version to display.                                                             |
+| **headers**         |  `object`  | Name-value `object` to define headers for remote introspections.                |
+| **include_styles**  | `boolean`  | Include custom inline `css` at the bottom of each page.                         |
+| **ignore**          | `string[]` | Ignore all types that match one of the given expressions.                       |
+| **locale**          |  `string`  | Allowed values: `de`, `en`, `es`, or `nl`. **Default**: `en`.                   |
+| **log_level**       |  `string`  | Allowed values: `all`, `debug`, `info`, `warn` or `error`. **Default**: `info`. |
+
+_Fields marked with `*` are non-nullable._

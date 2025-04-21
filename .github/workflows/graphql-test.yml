@@ -1,10 +1,13 @@
-# See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-name: Unit-tests
+name: Test @antora-tools/graphql
 
 on:
   push:
+    paths:
+      - 'packages/graphql/**'
     branches: [main]
   pull_request:
+    paths:
+      - 'packages/graphql/**'
     branches: [main]
 jobs:
   build:
@@ -12,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [22.x, 23.x]
+        node-version: [22.x]
         os: [windows-latest, macOS-latest, ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
@@ -23,4 +26,6 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run lint
+        working-directory: ./packages/graphql
       - run: npm test
+        working-directory: ./packages/graphql

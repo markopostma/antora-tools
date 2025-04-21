@@ -1,8 +1,12 @@
 name: E2E @antora-tools/graphql
 on:
   push:
+    paths:
+      - 'packages/graphql/**'
     branches: [main]
   pull_request:
+    paths:
+      - 'packages/graphql/**'
     branches: [main]
 jobs:
   test:
@@ -14,7 +18,7 @@ jobs:
         with:
           node-version: lts/*
       - name: Install dependencies
-        run: npm ci && npm ci --prefix packages/graphql
+        run: npm ci
       - name: Build
         run: npm run build
         working-directory: ./packages/graphql

@@ -8,11 +8,11 @@
     "moduleResolution": "node",
     "outDir": "lib",
     "resolveJsonModule": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES2022",
-    "typeRoots": ["**/@types"]
+    "noEmit": true,
+    "target": "ES2022"
   }
 }

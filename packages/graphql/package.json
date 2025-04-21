@@ -9,7 +9,7 @@
     "url": "https://github.com/markopostma"
   },
   "scripts": {
-    "build": "tsx ../../scripts/build.ts -p .",
+    "build": "tsx ../../scripts/build.ts",
     "lint": "npx eslint ./src ./test ./e2e/*.spec.ts --quiet",
     "test:e2e": "npx playwright test",
     "test": "npx jest --testPathPattern=test/",

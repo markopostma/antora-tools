@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "tsx scripts/build.ts -p packages/graphql -p packages/typedoc",
+    "build": "npm run build --workspaces",
     "clean": "npx rimraf packages/**/lib",
     "dev": "npm run build -- -w",
     "test": "npm test --workspaces"

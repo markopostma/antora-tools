@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "declaration": true,
+    "declaration": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["ES2022"],
@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "outDir": "lib",
     "resolveJsonModule": true,
-    "rootDir": ".",
+    "rootDir": "./src",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "strict": true,

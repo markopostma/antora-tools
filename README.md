@@ -59,6 +59,12 @@ Build for a single workspace:
 npm run build -w @antora-tools/graphql
 ```
 
+Or watch for changes:
+
+```bash
+npm run build -w @antora-tools/graphql -- --watch
+```
+
 #### `clean`
 
 Clean all workspaces:

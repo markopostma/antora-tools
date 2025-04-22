@@ -1,3 +1,4 @@
+import { MockGeneratorContext } from '@antora-tools/test-utils';
 import type { GeneratorContext, Playbook } from '@antora/site-generator';
 import { AntoraExtension } from '../../src/classes/antora-extension';
 import { DEFAULT_CONFIG } from '../../src/constants';
@@ -13,7 +14,6 @@ import { AttachResultsTask } from '../../src/tasks/navigation-built/attach-resul
 import { NavigationTask } from '../../src/tasks/navigation-built/navigation.task';
 import { TaskConstructor } from '../../src/types';
 import { ObjectUtil } from '../../src/utils';
-import { MockGeneratorContext } from '../test-util/mock-generator-context';
 
 describe('class AntoraExtension', () => {
   let context: GeneratorContext;

@@ -20,3 +20,57 @@ The Antora GraphQL Extension transforms your GraphQL schema or introspection que
 This package has not been released yet, but will be in the near future.
 
 [Go to README](https://github.com/markopostma/antora-tools/tree/main/packages/typedoc)
+
+## Development
+
+This project uses `esbuild` to transpile TypeScript code into JavaScript to make it suitable for an Antora environment. All packages in `packages/*` that need to be published to NPM and consumed as JavaScript are built this way.
+
+### Install
+
+```bash
+npm install # or npm i
+```
+
+### Scripts
+
+The root `package.json` defines some scripts:
+
+```json
+{
+  "build": "npm run build -ws --if-present",
+  "clean": "npm run clean -ws --if-present",
+  "test": "npm test -ws --if-present"
+}
+```
+
+The `-ws` and `--if-present` flags tell npm to execute the command from the working directory of each package, only if the script is present.
+
+#### `build`
+
+Build all workspaces:
+
+```bash
+npm run build
+```
+
+Build for a single workspace:
+
+```bash
+npm run build -w @antora-tools/graphql
+```
+
+#### `clean`
+
+Clean all workspaces:
+
+```bash
+npm run clean
+```
+
+#### `test`
+
+Test all workspaces with `jest`:
+
+```bash
+npm run test
+```

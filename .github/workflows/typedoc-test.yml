@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'packages/typedoc/**'
+      - '.github/workflows/typedoc-test.yml'
     branches: [main]
   pull_request:
     paths:

@@ -1,0 +1,14 @@
+{
+  "name": "@antora-tools/test-utils",
+  "private": true,
+  "version": "0.1.0",
+  "main": "./src/index.ts",
+  "license": "MIT",
+  "author": {
+    "name": "Marko Postma",
+    "url": "https://github.com/markopostma"
+  },
+  "scripts": {
+    "test": "npx jest --testPathPattern=test/"
+  }
+}

@@ -1,16 +1,20 @@
-import * as esbuild from 'esbuild';
-import * as path from 'node:path';
+import { configureLogger, getLogger } from '@antora/logger';
 import { parseArgs } from 'node:util';
 
+/**
+ * A generic build script with esbuild under the hood.
+ *
+ */
 async function build() {
-  const { packages } = getOptions();
+  const { join, resolve } = await import('node:path');
+  const { root } = getOptions();
 
   return Promise.all(
-    packages.map(async (pack) =>
+    root.map((dir) =>
       buildEntry({
-        entryPoints: [path.join(pack, 'src/**/*.ts')],
-        tsconfig: path.join(pack, 'tsconfig.build.json'),
-        outdir: path.join(pack, 'lib'),
+        entryPoints: [join(dir, 'src/**/*.ts')],
+        tsconfig: join(dir, 'tsconfig.build.json'),
+        outdir: join(resolve(dir), 'lib'),
         // Common
         platform: 'node',
         target: 'ES2022',
@@ -23,7 +27,9 @@ async function build() {
   );
 }
 
-async function buildEntry(opts: Partial<esbuild.BuildOptions> = {}) {
+async function buildEntry(opts: Partial<import('esbuild').BuildOptions> = {}) {
+  const esbuild = await import('esbuild');
+  const logger = await createLogger('build');
   const { watch, logLevel } = getOptions();
   const ctx = await esbuild.context({
     ...opts,
@@ -35,14 +41,24 @@ async function buildEntry(opts: Partial<esbuild.BuildOptions> = {}) {
 
   // If watch is true then keep watching, else dispose the context.
   if (watch) {
-    console.log('✅ Watching...');
+    logger.info('Watching... 👀');
     await ctx.watch();
   } else {
-    console.log(`✅ Build successful [${opts.outdir}]`);
+    logger.info(`Build successful [${opts.outdir}]`);
     await ctx.dispose();
   }
 
   return ctx;
+}
+
+async function createLogger(name: string) {
+  configureLogger({
+    name,
+    level: 'trace',
+    format: 'pretty',
+  });
+
+  return getLogger(name);
 }
 
 function getOptions() {
@@ -57,19 +73,19 @@ function getOptions() {
       },
       logLevel: {
         type: 'string',
-        default: 'info',
+        default: 'warning',
       },
-      packages: {
+      root: {
         type: 'string',
         multiple: true,
-        default: [],
-        short: 'p',
+        default: ['.'],
+        short: 'r',
       },
     },
   }).values as {
     watch: boolean;
-    logLevel: esbuild.LogLevel;
-    packages: string[];
+    logLevel: import('esbuild').LogLevel;
+    root: string[];
   };
 }
 

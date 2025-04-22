@@ -1,16 +1,13 @@
-import type { ContextVariables, CustomConfig, GeneratorContext } from '@antora/site-generator';
+import type { ContextVariables, GeneratorContext } from '@antora/site-generator';
 import { EventEmitter } from 'node:events';
-import { DEFAULT_CONFIG } from '../../src/constants';
-import type { Config } from '../../src/interfaces';
-import { ObjectUtil } from '../../src/utils';
 import { MockLogger } from './mock-logger';
 
 export class MockGeneratorContext extends EventEmitter implements GeneratorContext {
-  static with(config: Partial<Config> = {}) {
-    return new this(ObjectUtil.deepMerge(DEFAULT_CONFIG, config));
+  static with(config: Record<any, any> = {}) {
+    return new this(config);
   }
 
-  constructor(readonly config: CustomConfig<Config>) {
+  constructor(readonly config: Record<any, any>) {
     super();
   }
 

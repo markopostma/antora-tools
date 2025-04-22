@@ -2,9 +2,18 @@
   "name": "@antora-tools/typedoc",
   "version": "0.1.0",
   "main": "lib/index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Marko Postma",
+    "url": "https://github.com/markopostma"
+  },
   "scripts": {
-    "build": "tsx ../../scripts/build.ts -p .",
+    "build": "tsx ../../scripts/build.ts",
+    "clean": "npx rimraf ./lib",
     "lint": "npx eslint ./src ./test --quiet",
     "test": "npx jest --testPathPattern=test/"
+  },
+  "dependencies": {
+    "typedoc": "^0.28.3"
   }
 }

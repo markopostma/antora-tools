@@ -6,7 +6,7 @@ import { Strategy } from '../../src/enums';
 import type { Config } from '../../src/interfaces';
 import { IntrospectionService } from '../../src/services/introspection-service';
 import { ArrayUtil, ObjectUtil } from '../../src/utils';
-import { createGraphQLServer } from '../test-util/msw/graphql-server';
+import { createGraphQLServer } from '../test-util/graphql-server';
 
 describe('IntrospectionService', () => {
   let service: IntrospectionService;

@@ -4,6 +4,5 @@
     "rootDir": ".",
     "typeRoots": ["../../@types", "../../node_modules/@types", "**/@types"]
   },
-  "include": ["src", "test"],
-  "exclude": ["lib"]
+  "include": ["src"]
 }

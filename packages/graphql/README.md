@@ -151,7 +151,7 @@ If your preferred locale is not supported; Most text in templates can be customi
 To start local development, run:
 
 ```bash
-$ npm install
+npm install
 ```
 
 ### Serve and watch
@@ -159,7 +159,7 @@ $ npm install
 To serve the Antora project in `/e2e/project` on `localhost:8080` and watch for file changes in the `src` directory, run:
 
 ```bash
-$ npm run serve
+npm run serve
 ```
 
 ### Unit-testing
@@ -167,7 +167,7 @@ $ npm run serve
 Unit-testing with `jest`.
 
 ```bash
-$ npm test
+npm test
 ```
 
 ### e2e-testing
@@ -175,13 +175,13 @@ $ npm test
 E2e-testing with `playwright`.
 
 ```bash
-$ npm run test:e2e
+npm run test:e2e
 ```
 
 Initially also run:
 
 ```bash
-$ npx playwright install --with-deps chromium
+npx playwright install --with-deps chromium
 ```
 
 ---
@@ -192,7 +192,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### [0.9.0] - UNRELEASED
+### [0.9.0] - 2025-04-22
 
 #### Added
 

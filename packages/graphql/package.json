@@ -15,7 +15,8 @@
     "test:e2e": "npx playwright test",
     "test": "npx jest --testPathPattern=test/",
     "serve": "tsx scripts/serve.ts",
-    "serve:all": "tsx scripts/serve.ts --playbook playbook.all.yml"
+    "serve:all": "tsx scripts/serve.ts --playbook playbook.all.yml",
+    "prepublishOnly": "npm run lint && npm run clean && npm run build"
   },
   "files": [
     "./lib/*",

@@ -6,7 +6,7 @@ import { parseArgs } from 'node:util';
  *
  */
 async function build() {
-  const { join } = await import('node:path');
+  const { join, resolve } = await import('node:path');
   const { root } = getOptions();
 
   return Promise.all(
@@ -14,7 +14,7 @@ async function build() {
       buildEntry({
         entryPoints: [join(dir, 'src/**/*.ts')],
         tsconfig: join(dir, 'tsconfig.build.json'),
-        outdir: join(dir, 'lib'),
+        outdir: join(resolve(dir), 'lib'),
         // Common
         platform: 'node',
         target: 'ES2022',

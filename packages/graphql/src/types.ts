@@ -1,12 +1,13 @@
 import type { AntoraFile, AntoraPage, ComponentDescriptor } from '@antora/content-classifier';
 import type * as graphql from 'graphql';
 import type { ServiceContainer } from './classes/service-container';
-import type { Config, ParsedIntrospection, Task } from './interfaces';
+import type { ParsedIntrospection, Task } from './interfaces';
 import type * as services from './services';
 
 export type AdocLiteral = `${string}.adoc`;
 export type FailedTask = Task & { state: Task['state'] & { error: Error } };
 export type Services = Readonly<{
+  ConfigService: services.ConfigService;
   LoggerService: services.LoggerService;
   IntrospectionService: services.IntrospectionService;
   MetaService: services.MetaService;
@@ -22,7 +23,7 @@ export type ParsableIntrospectionType =
   | graphql.IntrospectionOutputTypeRef
   | graphql.IntrospectionType;
 export type TaskConstructor = {
-  new (config: Config, services: ServiceContainer): Task;
+  new (services: ServiceContainer): Task;
 };
 export type CollectedData = {
   attachments: AntoraFile[];

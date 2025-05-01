@@ -35,4 +35,19 @@ test.describe('queries', () => {
     await expect(visited.locator('h2').nth(2)).toHaveText('Request');
     expect(visited.locator('code.language-graphql.hljs')).toBeDefined();
   });
+
+  test.describe('@deprecated', () => {
+    test.beforeEach(async ({ page }) => {
+      visited = page;
+
+      await page.goto('/graphql/queries/search.html');
+      await page.waitForLoadState('domcontentloaded');
+    });
+
+    test('shows CAUTION message', async () => {
+      await expect(visited.locator('.admonitionblock.caution').nth(0)).toHaveText(
+        'Is no longer useful.',
+      );
+    });
+  });
 });

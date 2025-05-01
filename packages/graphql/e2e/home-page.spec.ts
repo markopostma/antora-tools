@@ -80,7 +80,10 @@ test.describe('home page', async () => {
         },
         {
           name: 'Subscriptions',
-          items: [{ text: 'search', link: 'subscriptions/search.html' }],
+          items: [
+            { text: 'delete', link: 'subscriptions/delete.html' },
+            { text: 'search', link: 'subscriptions/search.html' },
+          ],
         },
         {
           name: 'Directives',

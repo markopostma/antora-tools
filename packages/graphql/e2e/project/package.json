@@ -2,9 +2,8 @@
   "name": "antora-e2e-project",
   "private": true,
   "scripts": {
-    "prebuild": "npx rimraf ./build",
-    "build": "npx antora playbook.file.yml",
-    "preserve": "npm run build --silent",
+    "build": "npx antora",
+    "preserve": "npm run build --silent -- playbook.file.yml",
     "serve": "npx http-server ./build/site"
   },
   "dependencies": {

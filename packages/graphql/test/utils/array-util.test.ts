@@ -1,21 +1,6 @@
-import { BaseUtil } from '../../src/bases/base-util';
 import { ArrayUtil } from '../../src/utils';
 
 describe('ArrayUtil', () => {
-  let arrayUtil: ArrayUtil;
-
-  beforeEach(() => {
-    arrayUtil = new ArrayUtil([1, 2, 3]);
-  });
-
-  it('creates', () => {
-    expect(arrayUtil).toBeInstanceOf(ArrayUtil);
-  });
-
-  it('extends BaseUtil', () => {
-    expect(arrayUtil).toBeInstanceOf(BaseUtil);
-  });
-
   describe('groupBy', () => {
     const input = [
       { name: 'Hank', age: 20 },
@@ -50,7 +35,7 @@ describe('ArrayUtil', () => {
       },
     ])('returns an object', ({ expected, by }) => {
       it('input returns expected output', () => {
-        const groups = new ArrayUtil(input).groupBy((i) => i[by]);
+        const groups = ArrayUtil.groupBy(input, (i) => i[by]);
 
         expect(groups).toEqual(expected);
       });

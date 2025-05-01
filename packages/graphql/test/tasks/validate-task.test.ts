@@ -1,15 +1,14 @@
 import { BaseTask } from '../../src/bases/base-task';
 import { ServiceContainer } from '../../src/classes/service-container';
-import { DEFAULT_CONFIG } from '../../src/constants';
 import { LogLevel } from '../../src/enums';
 import { Config } from '../../src/interfaces';
 import { ValidateTask } from '../../src/tasks/before-process/validate.task';
 
 describe('ValidateTask', () => {
-  const services = new ServiceContainer({ ...DEFAULT_CONFIG } as any as Config);
+  let services = new ServiceContainer({});
 
   it('creates', () => {
-    const task = new ValidateTask({} as Config, services);
+    const task = new ValidateTask(services);
 
     expect(task).toBeInstanceOf(BaseTask);
     expect(task).toBeInstanceOf(ValidateTask);
@@ -17,31 +16,17 @@ describe('ValidateTask', () => {
 
   describe('assertEnum', () => {
     it('valid', () => {
-      const task = new ValidateTask({ logLevel: LogLevel.Debug } as Config, services);
+      services = new ServiceContainer({ logLevel: LogLevel.Debug });
+      const task = new ValidateTask(services);
       const { valid } = task['assertEnum']('logLevel', task.config.logLevel, LogLevel);
 
       expect(valid).toBeTruthy();
     });
 
     it('invalid value', () => {
-      const task = new ValidateTask({ logLevel: 'FAIL' as any } as Config, services);
+      services = new ServiceContainer({ logLevel: 'FAIL' as any });
+      const task = new ValidateTask(services);
       const { valid } = task['assertEnum']('logLevel', task.config.logLevel, LogLevel);
-
-      expect(valid).toBeFalsy();
-    });
-  });
-
-  describe('assertBoolean', () => {
-    it('valid', () => {
-      const task = new ValidateTask({ includeStyles: true } as Config, services);
-      const { valid } = task['assertBoolean']('includeStyles', task.config.includeStyles);
-
-      expect(valid).toBeTruthy();
-    });
-
-    it('invalid type', () => {
-      const task = new ValidateTask({ includeStyles: 'FAIL' as any } as Config, services);
-      const { valid } = task['assertBoolean']('includeStyles', task.config.includeStyles);
 
       expect(valid).toBeFalsy();
     });
@@ -49,14 +34,16 @@ describe('ValidateTask', () => {
 
   describe('assertString', () => {
     it('valid', () => {
-      const task = new ValidateTask({ name: 'some-name' } as Config, services);
+      services = new ServiceContainer({ name: 'some-name' });
+      const task = new ValidateTask(services);
       const valid = task['assertString']('name', task.config.name).every(({ valid }) => valid);
 
       expect(valid).toBeTruthy();
     });
 
     it('invalid length', () => {
-      const task = new ValidateTask({ name: '' } as Config, services);
+      services = new ServiceContainer({ name: '' });
+      const task = new ValidateTask(services);
       const [typeAssertion, lengthAssertion] = task['assertString']('name', task.config.name, 4);
 
       expect(typeAssertion.valid).toBeTruthy();
@@ -64,7 +51,8 @@ describe('ValidateTask', () => {
     });
 
     it('invalid type', () => {
-      const task = new ValidateTask({ name: 5 as any } as Config, services);
+      services = new ServiceContainer({ name: 5 as any });
+      const task = new ValidateTask(services);
       const [typeAssertion] = task['assertString']('name', task.config.name, 4);
 
       expect(typeAssertion.valid).toBeFalsy();
@@ -73,22 +61,24 @@ describe('ValidateTask', () => {
 
   describe('assertArray', () => {
     it('valid', () => {
-      const task = new ValidateTask({ ignore: [] as any[] } as Config, services);
+      const task = new ValidateTask(services);
       const valid = task['assertArray']('name', task.config.ignore);
 
       expect(valid).toBeTruthy();
     });
 
     it('invalid length', () => {
-      const task = new ValidateTask({ ignore: [] as any[] } as Config, services);
-      const [typeAssertion, lengthAssertion] = task['assertArray']('ignore', task.config.ignore, 1);
+      services = new ServiceContainer({ ignore: [] as any[] });
+      const task = new ValidateTask(services);
+      const [typeAssertion, lengthAssertion] = task['assertArray']('ignore', task.config.ignore, 2);
 
       expect(typeAssertion.valid).toBeTruthy();
       expect(lengthAssertion.valid).toBeFalsy();
     });
 
     it('invalid type', () => {
-      const task = new ValidateTask({ ignore: '' as unknown as any[] } as Config, services);
+      services = new ServiceContainer({ ignore: '' as unknown as any[] } as Config);
+      const task = new ValidateTask(services);
       const [typeAssertion] = task['assertArray']('ignore', task.config.ignore);
 
       expect(typeAssertion.valid).toBeFalsy();

@@ -62,7 +62,7 @@ class Serve {
 
     for (const task of [
       this.runCommand('npm run build'),
-      this.runCommand(`cd ./e2e/project && npx antora ${this.getOptions().playbook}`),
+      this.runCommand(`npm run build --prefix e2e/project -- ${this.getOptions().playbook}`),
     ]) {
       const messages = await task.then(({ stderr, stdout }) => [stderr, stdout].filter(Boolean));
 
@@ -73,18 +73,15 @@ class Serve {
   }
 
   private async clean() {
-    await this.runCommand('npm run clean');
+    return await this.runCommand('npm run clean');
   }
 
-  private runCommand(command: string) {
-    return new Promise<{ stdout: string; stderr: string }>((resolve, reject) => {
+  private async runCommand(command: string): Promise<{ stderr?: string; stdout?: string }> {
+    return await new Promise<{ stdout: string; stderr: string }>((resolve, reject) => {
       exec(command, (err, stdout, stderr) => {
         if (err) reject(err);
         else resolve({ stdout, stderr });
       });
-    }).catch((error) => {
-      this.logger.error(error);
-      return { stderr: error, stdout: undefined };
     });
   }
 

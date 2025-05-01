@@ -1,20 +1,7 @@
 <% if (data.inputFields?.length) { %>
 == <%= translate('inputFields') %>
 
-<% data.inputFields.filter(f => !f.isDeprecated).forEach(f => { %>
-=== <%= `\`${f.name}\`` %>
-
-<%= `\`${helpers.xref.format(f.type)}\`` %> <%= f.description ? `- ${f.description}` : '\n' %>
-
-<% if (f.args?.length) { %>
-**<%= translate('arguments') %>**
-<% f.args.forEach(a => { %>
-- <%= `\`${a.name}\` - \`${helpers.xref.format(a.type)}\`` %> <%= a.defaultValue ? `= \`${a.defaultValue}\`` : '' %> <%= a.description ? `- ${a.description}` : '' %>
-<% }) %>
-<% } %>
-<% }) %>
-<% data.inputFields.filter(f => f.isDeprecated).forEach(f => { %>
-=== <%= `\`[.line-through]#${f.name}#\`` %>
-<%= f.deprecationReason %>
+<% data.inputFields.forEach(f => { %>
+<%~ include('./field', { ...it, f } ) %>
 <% }) %>
 <% } %>

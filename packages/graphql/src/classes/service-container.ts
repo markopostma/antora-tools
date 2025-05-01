@@ -1,38 +1,36 @@
 import type { Config, Service, ServiceConstructor } from '../interfaces';
-import {
-  IntrospectionService,
-  LoggerService,
-  MetaService,
-  TemplateService,
-  TranslateService,
-} from '../services';
+import * as services from '../services';
 import type { Services } from '../types';
 
 export class ServiceContainer {
   readonly #map = new Map<keyof Services, Service>();
 
-  constructor(private readonly config: Config) {
+  constructor(private readonly rawConfig: Partial<Config>) {
     this.initialize();
   }
 
+  get config() {
+    return this.get(services.ConfigService);
+  }
+
   get introspection() {
-    return this.get(IntrospectionService);
+    return this.get(services.IntrospectionService);
   }
 
   get logger() {
-    return this.get(LoggerService);
+    return this.get(services.LoggerService);
   }
 
   get meta() {
-    return this.get(MetaService);
+    return this.get(services.MetaService);
   }
 
   get translate() {
-    return this.get(TranslateService);
+    return this.get(services.TranslateService);
   }
 
   get template() {
-    return this.get(TemplateService);
+    return this.get(services.TemplateService);
   }
 
   private get<K extends ServiceConstructor>(serviceType: K) {
@@ -40,13 +38,19 @@ export class ServiceContainer {
   }
 
   private initialize() {
-    const logger = this.factory(LoggerService, this.config);
-    const meta = this.factory(MetaService, this.config, logger);
-    const introspection = this.factory(IntrospectionService, this.config);
-    const translate = this.factory(TranslateService, this.config, logger, meta.getMetaFile());
-    const template = this.factory(TemplateService, this.config, translate);
+    const configService = this.factory(services.ConfigService, this.rawConfig);
+    const logger = this.factory(services.LoggerService, configService.config);
+    const meta = this.factory(services.MetaService, configService.config, logger);
+    const introspection = this.factory(services.IntrospectionService, configService.config);
+    const translate = this.factory(
+      services.TranslateService,
+      configService.config,
+      logger,
+      meta.getMetaFile(),
+    );
+    const template = this.factory(services.TemplateService, configService.config, translate);
 
-    [logger, introspection, meta, translate, template].forEach((service) => {
+    [configService, logger, introspection, meta, translate, template].forEach((service) => {
       this.#map.set(service.name, service);
     });
   }

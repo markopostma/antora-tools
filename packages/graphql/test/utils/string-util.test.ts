@@ -1,22 +1,6 @@
-import { BaseUtil } from '../../src/bases/base-util';
 import { StringUtil } from '../../src/utils';
 
 describe('StringUtil', () => {
-  let stringUtil: StringUtil;
-
-  beforeEach(() => {
-    stringUtil = new StringUtil('test');
-  });
-
-  it('creates', () => {
-    expect(stringUtil).toBeInstanceOf(StringUtil);
-    expect(stringUtil.input).toEqual('test');
-  });
-
-  it('extends BaseUtil', () => {
-    expect(stringUtil).toBeInstanceOf(BaseUtil);
-  });
-
   describe('transform', () => {
     describe.each([
       {
@@ -40,7 +24,7 @@ describe('StringUtil', () => {
       },
     ] as const)('processes functions', ({ input, transforms, expected }) => {
       it(`${input} returns ${expected}`, () => {
-        const output = new StringUtil(input).transform(...transforms);
+        const output = StringUtil.transform(input, ...transforms);
 
         expect(output).toEqual(expected);
       });
@@ -56,7 +40,7 @@ describe('StringUtil', () => {
       { input: 'dashed-string', expected: 'Dashed String' },
     ])('Changes first character to uppercase', ({ expected, input }) => {
       it(`${input} returns ${expected}`, () => {
-        const output = new StringUtil(input).titleCase();
+        const output = StringUtil.titleCase(input);
 
         expect(output).toEqual(expected);
       });

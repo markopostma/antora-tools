@@ -12,7 +12,7 @@ describe('BaseTask', () => {
   let task: TestTask;
 
   beforeEach(() => {
-    task = new TestTask({} as any, services);
+    task = new TestTask(services);
   });
 
   it('creates', () => {

@@ -3,7 +3,7 @@ import type { EventName, LifeCycleVariables } from '@antora/site-generator';
 import { performance } from 'node:perf_hooks';
 import type { ServiceContainer } from '../classes/service-container';
 import { TaskStatus } from '../enums';
-import type { Config, Task } from '../interfaces';
+import type { Task } from '../interfaces';
 import type { AdocLiteral, CollectedData } from '../types';
 import { NumberUtil } from '../utils';
 
@@ -14,10 +14,7 @@ export abstract class BaseTask<E extends EventName = any, D extends Record<strin
     status: TaskStatus.Idle,
   };
 
-  constructor(
-    readonly config: Config,
-    readonly services: ServiceContainer,
-  ) {}
+  constructor(readonly services: ServiceContainer) {}
 
   abstract handle(variables: LifeCycleVariables<E>, data: CollectedData): Promise<D>;
 
@@ -69,6 +66,10 @@ export abstract class BaseTask<E extends EventName = any, D extends Record<strin
     return this.services.logger;
   }
 
+  get config() {
+    return this.services.config.config;
+  }
+
   protected addPage(path: AdocLiteral, contents: Buffer, contentCatalog: antora.ContentCatalog) {
     return this.addFile<antora.AntoraPage>(
       {
@@ -112,7 +113,7 @@ export abstract class BaseTask<E extends EventName = any, D extends Record<strin
     catalog: antora.ContentCatalog,
   ) {
     const file = catalog.addFile(desc, this.config.version);
-    const size = new NumberUtil(file._contents.length).formatBytes();
+    const size = NumberUtil.formatBytes(file._contents.length);
 
     this.logger.trace('Added %s %s [%s]', desc.src.family.toUpperCase(), file.src.relative, size);
 

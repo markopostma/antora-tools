@@ -11,7 +11,6 @@ export interface Config {
   version: string;
   displayVersion: string;
   headers: { name: string | keyof RequestOptions['headers']; value: string }[];
-  includeStyles: boolean;
   locale: Locale;
   logLevel: LogLevel;
   ignore: Array<string | RegExp>;

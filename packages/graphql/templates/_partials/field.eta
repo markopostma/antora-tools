@@ -1,0 +1,24 @@
+<% if (!f.isDeprecated) { %>
+=== <%= `\`${f.name}\`` %>
+<%= f.defaultValue 
+  ? `\`${helpers.xref.format(f.type)} = ${f.defaultValue}\`` 
+  : `\`${helpers.xref.format(f.type)}\`` %> 
+<%= f.description ? `- ${f.description}` : '' %>
+<% } else { %>
+=== <%= `\`[.line-through]#${f.name}#\`` %>
+<%= f.defaultValue 
+  ? `\`${helpers.xref.format(f.type)} = ${f.defaultValue}\`` 
+  : `\`${helpers.xref.format(f.type)}\`` %> 
+- <%= f.deprecationReason %>
+<% } %>
+
+<% if (f.args?.length) { %>
+** <%= translate('arguments') %>**
+<% f.args.forEach(a => { %>
+* <%= `\`${a.name}\`` %>
+<%= a.defaultValue 
+  ? `\`${helpers.xref.format(a.type)} = ${a.defaultValue}\`` 
+  : `\`${helpers.xref.format(a.type)}\`` %> 
+<%= a.description ? `- ${a.description}` : '' %>
+<% }) %>
+<% } %>

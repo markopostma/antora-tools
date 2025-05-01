@@ -1,6 +1,4 @@
-import { BaseUtil } from '../bases/base-util';
-
-export class ObjectUtil extends BaseUtil {
+export class ObjectUtil {
   static deepMerge<T>(...objects: any[]): T {
     const isObject = (obj: any) => obj && typeof obj === 'object';
 

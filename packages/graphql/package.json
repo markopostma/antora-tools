@@ -1,12 +1,16 @@
 {
   "name": "@antora-tools/graphql",
   "description": "An Antora extension to generate static schema information.",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "main": "./lib/index.js",
   "license": "MIT",
   "author": {
     "name": "Marko Postma",
     "url": "https://github.com/markopostma"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/markopostma/antora-tools/tree/main/packages/graphql"
   },
   "scripts": {
     "build": "tsx ../../scripts/build.ts",
@@ -36,8 +40,6 @@
     "@graphql-tools/load": "^8.1.0",
     "@graphql-tools/url-loader": "^8.0.31",
     "@playwright/test": "^1.52.0",
-    "@types/http-server": "^0.12.4",
-    "http-server": "^14.1.1",
     "msw": "^2.7.5"
   }
 }

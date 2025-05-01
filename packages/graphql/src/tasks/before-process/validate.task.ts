@@ -30,7 +30,6 @@ export class ValidateTask extends BaseTask {
       optional('displayVersion').string(1),
       optional('headers').array(),
       optional('ignore').array(1),
-      optional('includeStyles').boolean(),
       optional('intro').string(1),
       optional('locale').enum(Locale),
       optional('logLevel').enum(LogLevel),
@@ -84,13 +83,6 @@ export class ValidateTask extends BaseTask {
     ] satisfies Validation[];
   }
 
-  private assertBoolean(prop: keyof Config, value: boolean) {
-    return {
-      valid: typeof value === 'boolean',
-      message: `${prop} is expected to be of type boolean. Actual type: ${typeof value}.`,
-    } satisfies Validation;
-  }
-
   private assertStrictProps(props: string[]) {
     const extraProps = Object.keys(this.config).filter((key) => !props.includes(key));
 
@@ -104,11 +96,10 @@ export class ValidateTask extends BaseTask {
     const value = this.config[prop];
     const notNull = value !== undefined && value !== null;
     const validation = { valid: true, message: '' } satisfies Validation;
-    const { assertArray, assertBoolean, assertEnum, assertString } = this;
+    const { assertArray, assertEnum, assertString } = this;
 
     return {
       array: (min?: number) => (notNull ? assertArray(prop, value as any[], min) : validation),
-      boolean: () => (notNull ? assertBoolean(prop, value as boolean) : validation),
       enum: (e: Record<string, any>) => (notNull ? assertEnum(prop, value, e) : validation),
       string: (min?: number) => (notNull ? assertString(prop, value as string, min) : validation),
     } as const;
@@ -118,7 +109,6 @@ export class ValidateTask extends BaseTask {
     'displayVersion',
     'headers',
     'ignore',
-    'includeStyles',
     'intro',
     'locale',
     'location',

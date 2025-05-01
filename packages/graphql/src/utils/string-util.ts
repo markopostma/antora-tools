@@ -1,10 +1,8 @@
-import { BaseUtil } from '../bases/base-util';
+export class StringUtil {
+  static titleCase(input: string) {
+    if (typeof input !== 'string') return String(input);
 
-export class StringUtil extends BaseUtil<string> {
-  titleCase() {
-    if (typeof this.input !== 'string') return String(this.input);
-
-    return this.input
+    return input
       .replaceAll(/(\_|\-|\s){1,}/gm, ' ')
       .split(' ')
       .map((w) => w.trim())
@@ -16,9 +14,9 @@ export class StringUtil extends BaseUtil<string> {
       .join(' ');
   }
 
-  transform<T extends (value: string) => string>(...transforms: Array<T>) {
+  static transform<T extends (value: string) => string>(input: string, ...transforms: Array<T>) {
     return transforms
       .filter((t) => typeof t === 'function')
-      .reduce((output, fn) => fn(output), this.input);
+      .reduce((output, fn) => fn(output), input);
   }
 }

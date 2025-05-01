@@ -1,7 +1,6 @@
 = <%= data.title %>
 :description: <%= helpers.notBlank(data.description) ? data.description.replace(/[^\w\s]/gi, '').substring(0, 159) : '' %>
 :page-pagination:
-:caution-caption: Deprecated
 
 <% if (helpers.notBlank(data.description)) { %>
 [.lead]
@@ -9,5 +8,6 @@
 <% } %>
 
 <% if (data.isDeprecated) { %>
-CAUTION: <%= data.deprecationReason %>
+[CAUTION,caption="Deprecated"]
+<%= data.deprecationReason %>
 <% } %>

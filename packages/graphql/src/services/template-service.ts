@@ -3,7 +3,7 @@ import { BaseService } from '../bases/base-service';
 import { TEMPLATES_PATH } from '../constants';
 import { Config } from '../interfaces';
 import type { AdocLiteral } from '../types';
-import { GraphQLUtil, NumberUtil, StringUtil } from '../utils';
+import { GraphQLUtil, NumberUtil } from '../utils';
 import { TranslateService } from './translate-service';
 
 export class TemplateService extends BaseService {
@@ -30,9 +30,8 @@ export class TemplateService extends BaseService {
     const helpers = {
       isDefined: (input: any) => ![null, undefined].includes(input),
       notBlank: (input: string) => typeof input === 'string' && input.trim().length > 0,
-      formatBytes: (value: number) => new NumberUtil(value).formatBytes(),
+      formatBytes: (value: number) => NumberUtil.formatBytes(value),
       printType: GraphQLUtil.printType,
-      titleCase: (value: string) => new StringUtil(value).titleCase(),
       xref: GraphQLUtil.xref,
     } as const;
     const raw = TemplateService.#engine

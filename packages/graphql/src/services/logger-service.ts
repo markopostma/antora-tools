@@ -49,7 +49,7 @@ export class LoggerService extends BaseService {
     const execText = execTime > 1000 ? `${execTime / 1000}s` : `${execTime}ms`;
     const pages = typeof content === 'function' ? (content() ?? []) : [];
     const { format } = await import('node:util');
-    const { FAILED, SKIPPED, IDLE } = new ArrayUtil(tasks).groupBy(({ state }) => state.status);
+    const { FAILED, SKIPPED, IDLE } = ArrayUtil.groupBy(tasks, ({ state }) => state.status);
     const render = (a: Task[] | undefined, s: TaskStatus) =>
       a?.length ? format('%d %s %s', a.length, s.toLowerCase(), 'task(s)') : null;
     const lines = [

@@ -1,12 +1,11 @@
 import { AntoraPage } from '@antora/content-classifier';
 import type * as SiteGenerator from '@antora/site-generator';
 import { performance } from 'node:perf_hooks';
-import { DEFAULT_CONFIG, EXTENSION_NAME } from '../constants';
+import { EXTENSION_NAME } from '../constants';
 import { TaskStatus } from '../enums';
 import type { Config, Task } from '../interfaces';
 import { beforeProcess, contentClassified, navigationBuilt } from '../tasks';
 import type { FailedTask, TaskConstructor } from '../types';
-import { ObjectUtil } from '../utils';
 import { ServiceContainer } from './service-container';
 
 export class AntoraExtension {
@@ -19,8 +18,8 @@ export class AntoraExtension {
     context: SiteGenerator.GeneratorContext,
     variables: SiteGenerator.LifeCycleVariables<'register'>,
   ) {
-    this.config = ObjectUtil.deepMerge(DEFAULT_CONFIG, variables.config);
-    this.services = new ServiceContainer(this.config);
+    this.services = new ServiceContainer(variables.config as Config);
+    this.config = this.services.config.config;
 
     this
       // Hook all tasks to the corresponding events.
@@ -59,7 +58,7 @@ export class AntoraExtension {
   }
 
   private createTask(taskConstructor: TaskConstructor) {
-    return new taskConstructor(this.config, this.services);
+    return new taskConstructor(this.services);
   }
 
   private async runTask(

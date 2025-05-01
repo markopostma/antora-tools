@@ -20,7 +20,7 @@ export class NavigationTask extends BaseTask<'navigationBuilt'> {
 
     return [
       ...this.getEntries(pages.filter(without)).map(([pageType, entries]) => ({
-        content: new StringUtil(pageType).titleCase(),
+        content: StringUtil.titleCase(pageType),
         items: this.mapPageTypes(pageType, entries.sort(ArrayUtil.sortBy('path'))),
       })),
       this.createToolsNav(pages),
@@ -30,7 +30,7 @@ export class NavigationTask extends BaseTask<'navigationBuilt'> {
   private mapPageTypes(pageType: string, pages: AntoraPage[]): Tree[] {
     if (pageType !== 'types') return pages.map(this.mapPageToTree.bind(this));
 
-    const groups = new ArrayUtil(pages).groupBy(this.getPageType(1));
+    const groups = ArrayUtil.groupBy(pages, this.getPageType(1));
 
     return Object.entries(groups)
       .sort(this.sortLiteral([...SORTING] as string[]))
@@ -50,7 +50,7 @@ export class NavigationTask extends BaseTask<'navigationBuilt'> {
   }
 
   private getEntries(pages: AntoraPage[]) {
-    const pageTypes = new ArrayUtil(pages).groupBy(this.getPageType());
+    const pageTypes = ArrayUtil.groupBy(pages, this.getPageType());
 
     return Object.entries(pageTypes).sort(this.sortLiteral([...SORTING] as string[]));
   }

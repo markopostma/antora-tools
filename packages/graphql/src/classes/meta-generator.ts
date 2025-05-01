@@ -40,8 +40,9 @@ export class MetaGenerator {
     const json = JSON.stringify(data, null, 2) ?? '';
     const matchArrays = [...(json.match(/\[\s*([^\[\]]*?)\s*\]/gm) ?? [])];
 
-    return new StringUtil(json).transform(
-      // Minifies arrays with just one entry.
+    // Minifies arrays with just one entry.
+    return StringUtil.transform(
+      json,
       ...matchArrays.map((m) => (value: string) => {
         const arr: any[] = JSON.parse(m);
 

@@ -3,8 +3,10 @@ import { MIMEType } from 'node:util';
 import { Locale, LogLevel } from './enums';
 import type { Config } from './interfaces';
 
+/** Name of the Antora extension. */
 export const EXTENSION_NAME = '@antora-tools/graphql' as const;
 
+/** Default configuration minus some properties */
 export const DEFAULT_CONFIG = Object.freeze({
   name: 'graphql',
   title: 'GraphQL Api Docs',
@@ -12,7 +14,6 @@ export const DEFAULT_CONFIG = Object.freeze({
   headers: [],
   locale: Locale.English,
   logLevel: LogLevel.Info,
-  includeStyles: true,
   ignore: [/^_/],
 } as const satisfies Omit<
   Config,

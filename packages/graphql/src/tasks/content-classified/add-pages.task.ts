@@ -130,15 +130,15 @@ export class AddPagesTask extends BaseTask<'contentClassified', { content: Antor
         data: {
           downloads: [
             {
-              size: new NumberUtil(schemaFile._contents.length).formatBytes(),
+              size: NumberUtil.formatBytes(schemaFile._contents.length),
               link: createLink('schema.graphql'),
             },
             {
-              size: new NumberUtil(schemaNoCommentsFile._contents.length).formatBytes(),
+              size: NumberUtil.formatBytes(schemaNoCommentsFile._contents.length),
               link: createLink('schema-no-comments.graphql'),
             },
             {
-              size: new NumberUtil(introspectionFile._contents.length).formatBytes(),
+              size: NumberUtil.formatBytes(introspectionFile._contents.length),
               link: createLink('introspection.json'),
             },
           ],
@@ -150,7 +150,7 @@ export class AddPagesTask extends BaseTask<'contentClassified', { content: Antor
   }
 
   private renderIndexPages(pages: AntoraPage[]) {
-    const groups = new ArrayUtil(pages).groupBy((c) => {
+    const groups = ArrayUtil.groupBy(pages, (c) => {
       const [first, second] = c.path.split('/').map((p) => p.trim()) as (typeof SORTING)[number][];
 
       return first === 'types' ? second : first;
@@ -160,7 +160,7 @@ export class AddPagesTask extends BaseTask<'contentClassified', { content: Antor
       .sort((a, b) => SORTING.indexOf(a) - SORTING.indexOf(b))
       .map((key) =>
         [
-          `[.index-page-group]\n== ${new StringUtil(key).titleCase()}`,
+          `[.index-page-group]\n== ${StringUtil.titleCase(key)}`,
           groups[key]
             .sort(ArrayUtil.sortBy('path'))
             .map((page) => `- xref:${page.path}[]`)

@@ -75,29 +75,15 @@ headers:
     value: 'bearer 123456'
 ```
 
-## Configuration keys
+## Configuration
 
-| Key                 |    Type    | Description                                                                     |
-| :------------------ | :--------: | :------------------------------------------------------------------------------ |
-| **strategy**\*      |  `string`  | Allowed values: `FILE`, `URL` or `INTROSPECTION`.                               |
-| **location**\*      |  `string`  | Location for provided strategy. [More info](#location)                          |
-| **name**            |  `string`  | Name for the component in lowercasing. **Default**: `'graphql'`.                |
-| **title**           |  `string`  | Title for the component. **Default**: `'GraphQL Api Docs'`.                     |
-| **intro**           |  `string`  | Text to display on the index page. Supports asciidoc.                           |
-| **meta_file**       |  `string`  | Local path to a file containing extra meta data. [More info](#meta_file)        |
-| **version**         |  `string`  | Version of the component.                                                       |
-| **display_version** |  `string`  | Version to display.                                                             |
-| **headers**         |  `object`  | Name-value `object` to define headers for remote introspections.                |
-| **include_styles**  | `boolean`  | Include custom inline `css` at the bottom of each page.                         |
-| **ignore**          | `string[]` | Ignore all types that match one of the given expressions.                       |
-| **locale**          |  `string`  | Allowed values: `de`, `en`, `es`, or `nl`. **Default**: `en`.                   |
-| **log_level**       |  `string`  | Allowed values: `all`, `debug`, `info`, `warn` or `error`. **Default**: `info`. |
+### `strategy`
 
-_Fields marked with `*` are non-nullable._
+**REQUIRED** `<string>` - Allowed values: `FILE`, `URL` or `INTROSPECTION`.
 
 ### `location`
 
-When using `FILE` strategy it is recommended to use **relative paths** to the current working directory. Glob patterns are supported. Some examples:
+**REQUIRED** `<string>` - Location for the chosen strategy. When using `FILE` strategy it is recommended to use **relative paths** to the current working directory. Glob patterns are supported. Some examples:
 
 - **Single file**
   - `./dir/file.graphql`
@@ -107,9 +93,29 @@ When using `FILE` strategy it is recommended to use **relative paths** to the cu
   - `dir/*.graphql`
   - `dir/**/*.graphql`
 
+### `name`
+
+`<string>` - Name for the component in lowercasing. **Default**: `'graphql'`.
+
+### `title`
+
+`<string>` - Title for the component. **Default**: `'GraphQL Api Docs'`.
+
+### `intro`
+
+Text to display on the index page. Supports multiline `asciidoc` and `markdown`. Therefor a `|` is necessary on the starting line. For example:
+
+```yml
+intro: |
+  TIP: Welcome to these pages.
+
+  * This is an item
+  ** This is a sub item
+```
+
 ### `meta_file`
 
-A meta file can be used to customize some aspects of the generated output. For example the output of the introspection query, shown descriptions or template literals.
+`<string>` - Local path to a file containing extra meta data. A meta file can be used to customize some aspects of the generated output. For example the output of the introspection query, shown descriptions or template literals.
 
 #### `LOCALE`
 
@@ -123,26 +129,33 @@ If your preferred locale is not supported; Most text in templates can be customi
 }
 ```
 
-##### Keys/Values
+The full `interface` and all available keys can be found [here](https://github.com/markopostma/antora-tools/blob/main/packages/graphql/src/interfaces/locale.ts).
 
-```json
-{
-  "arguments": "Arguments",
-  "definition": "Definition",
-  "downloads": "Downloads",
-  "enumValues": "Enum values",
-  "example": "Example",
-  "fields": "Fields",
-  "implementations": "Implementations",
-  "implementedBy": "Implemented by",
-  "inputFields": "Input fields",
-  "locations": "Locations",
-  "possibleTypes": "Possible types",
-  "repeatable": "Repeatable",
-  "request": "Request",
-  "returnType": "Return type"
-}
-```
+### `version`
+
+`<string>` - Version of the component.
+
+### `display_version`
+
+`<string>` - Text to display as version label.
+
+### `headers`
+
+`<{name: string, value: string}[]>` - Define headers for remote introspections.
+
+### `ignore`
+
+`<string[]>` - Ignore all types that match one of the given expressions by name.
+
+### `locale`
+
+`<string>` - Allowed values: `de`, `en`, `es`, or `nl`. **Default**: `en`.
+
+### `log_level`
+
+`<string>` - Allowed values: `all`, `debug`, `info`, `warn` or `error`. **Default**: `info`.
+
+---
 
 ## Development
 

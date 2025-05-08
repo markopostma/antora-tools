@@ -16,7 +16,7 @@ antora:
       location: <String>
 ----
 
-=== For multiple projects
+=== Multiple projects
 
 [source,yml]
 .Multi project configuration
@@ -31,9 +31,12 @@ antora:
           location: 'https://host.com/graphql'
         - strategy: URL
           location: 'https://host.com/schema.graphql'
-          version: '1.0.0'
+          version: 1.0.0
+        - strategy: URL
+          location: 'https://host.com/v2/schema.graphql'
+          version: 2.0.0
 ----
-This allows you to provide an array of components. Mixing up different strategies is not supposed to be a problem. Each component has it's own dedicated configuration set.
+This allows you to provide an array of components. Mixing different strategies should not be a problem. Each component has a dedicated configuration set.
 
 == Generation
 
@@ -44,8 +47,11 @@ With the extension enabled the time has come to build the Antora project with th
 npx antora {your-playbook}.yml
 ----
 
-If all went well, the result should be something as:
+If all went according to plan, the result should be something as:
 
-  Generated 34 pages in 123ms
+  Generated 34 pages in 1337ms
 
-== What's next? 🚀
+.What's next?
+****
+Start with the xref:configuration/index.adoc[].
+****

@@ -11,15 +11,7 @@ antora:
           title: FILE
           meta_file: './metadata.json'
           intro: |
-            Welcome to the **GraphQL Demo** pages. This *intro* is mainly a demo of adoc elements.
-
-            WARNING: This component uses the **FILE** strategy.
-
-            [,http]
-            .API ENDPOINT
-            ----
-            POST https://somehost.com/graphql
-            ----
+            Welcome to the **GraphQL Demo** pages.
         - strategy: URL
           location: 'https://markopostma.github.io/antora-docs/graphql-demo/_attachments/schema.graphql'
           name: strategy-url

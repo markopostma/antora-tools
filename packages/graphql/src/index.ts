@@ -1,12 +1,12 @@
 import type { GeneratorContext, Playbook } from '@antora/site-generator';
 import { AntoraExtension } from './classes/antora-extension';
-import type { Config, MultiConfig } from './interfaces';
+import type { MultiConfig } from './types';
 
 export function register(
   context: GeneratorContext,
-  variables: { config: MultiConfig | Config; playbook: Playbook },
+  variables: { config: MultiConfig; playbook: Playbook },
 ) {
-  if ('components' in variables.config) {
+  if ('components' in variables.config && Array.isArray(variables.config.components)) {
     for (const config of variables.config.components) {
       new AntoraExtension(context, { ...variables, config });
     }

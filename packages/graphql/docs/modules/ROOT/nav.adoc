@@ -1,3 +1,6 @@
 * xref:installation.adoc[]
 * xref:quickstart.adoc[]
-* xref:configuration.adoc[]
+* xref:configuration/index.adoc[]
+** xref:configuration/meta-file.adoc[]
+** xref:configuration/strategy.adoc[]
+* xref:changelog.adoc[]

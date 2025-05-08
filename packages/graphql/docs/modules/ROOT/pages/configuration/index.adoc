@@ -1,0 +1,167 @@
+= Configuration
+
+[#strategy]
+== `strategy`
+
+`[blue]#<string>#` **REQUIRED**  - The strategy used to build a `GraphQLSchema`. Allowed values: `FILE`, `URL` or `INTROSPECTION`. Read how to xref:./strategy.adoc[determine a strategy].
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+strategy: URL
+----
+====
+
+== `location`
+
+`[blue]#<string>#` **REQUIRED** - Location for the chosen strategy.
+
+[%collapsible]
+.Example
+====
+When using `FILE` strategy it is recommended to use **relative paths** to the current working directory. link:https://www.digitalocean.com/community/tools/glob[Glob patterns,window=_blank] are supported.
+
+[source,yml]
+----
+location: "dir/file.graphql" # relative path to a single file
+location: "dir/*.graphql"    # relative path with a pattern
+----
+====
+
+== `name`
+
+`[blue]#<string>#` - Name for the component in lowercasing without whitespace. **Default**: `graphql`.
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+name: a-different-name
+----
+====
+
+== `title`
+
+`[blue]#<string>#` - Title for the component. **Default**: `"GraphQL Api Docs"`.
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+title: "A different title"
+----
+====
+
+== `intro`
+
+`[blue]#<string>#` - Text to display on the index page. Supports multiline `asciidoc` and `markdown`. Therefor a `|` is necessary on the starting line.
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+intro: |
+  TIP: Welcome to these pages.
+
+  * This is an item
+  ** This is a sub item
+----
+====
+
+== `meta_file`
+
+`[blue]#<string>#` - Local path to a file containing extra meta data. See xref:./meta-file.adoc[] for more information.
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+meta_file: "metadata.json"
+----
+====
+
+== `version`
+
+`[blue]#<string>#` - Version of the component.
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+version: 0.1.0
+----
+====
+
+== `display_version`
+
+`[blue]#<string>#` - Text to display as version label.
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+display_version: latest
+----
+====
+
+== `headers`
+
+`[blue]#<Object[]>#` - Define headers for remote introspections.
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+headers:
+  - name: "Authorization"
+    value: "Basic"
+----
+====
+
+== `ignore`
+
+`[blue]#<string[]>#` - Ignore all types that match one of the given expressions by name.
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+ignore: ["^(SomeName|someName)$"]
+----
+====
+
+== `locale`
+
+`[blue]#<string>#` - Allowed values: `de`, `en`, `es`, or `nl`. **Default**: `en`.
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+locale: de
+----
+====
+
+== `log_level`
+
+`[blue]#<string>#` - Allowed values: `all`, `debug`, `info`, `warn` or `error`. **Default**: `info`.
+
+[%collapsible]
+.Example
+====
+[source,yml]
+----
+log_level: all
+----
+====

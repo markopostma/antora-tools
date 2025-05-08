@@ -1,0 +1,113 @@
+= Meta file
+
+A meta file can be used to customize some aspects of the generated output in `JSON` format. For example the output of the introspection query, shown descriptions or template literals.
+
+== `LOCALE`
+
+If your preferred locale is not supported; Most text in templates can be customized to your liking:
+
+[,json]
+----
+{
+  "LOCALE": {
+    "[key]": "[value]"
+  }
+}
+----
+
+The full `interface` and all available keys can be found link:https://github.com/markopostma/antora-tools/blob/main/packages/graphql/src/interfaces/locale.ts[here].
+
+== `SCALAR`
+
+[,json]
+----
+{
+  "SCALAR": {
+    "[name]": {
+      "documentation": {
+        "description": "[value]",
+        "example": "[value]"
+      }
+    }
+  }
+}
+----
+
+== `OBJECT`
+
+[,json]
+----
+{
+  "OBJECT": {
+    "[name]": {
+      "documentation": {
+        "description": "[value]",
+        "example": "[value]"
+      }
+    }
+  }
+}
+----
+
+== `INTERFACE`
+
+[,json]
+----
+{
+  "INTERFACE": {
+    "[name]": {
+      "documentation": {
+        "description": "[value]",
+        "example": "[value]"
+      }
+    }
+  }
+}
+----
+
+== `INPUT_OBJECT`
+
+[,json]
+----
+{
+  "INPUT_OBJECT": {
+    "[name]": {
+      "documentation": {
+        "description": "[value]",
+        "example": "[value]"
+      }
+    }
+  }
+}
+----
+
+== `ENUM`
+
+[,json]
+----
+{
+  "ENUM": {
+    "[name]": {
+      "documentation": {
+        "description": "[value]",
+        "example": "[value]"
+      }
+    }
+  }
+}
+----
+
+== `UNION`
+
+[,json]
+----
+{
+  "UNION": {
+    "[name]": {
+      "documentation": {
+        "description": "[value]"
+      }
+    }
+  }
+}
+----

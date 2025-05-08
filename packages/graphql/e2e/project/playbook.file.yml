@@ -4,17 +4,11 @@ site:
 antora:
   extensions:
     - require: '@antora-tools/graphql'
-      strategy: FILE
+      strategy: BIER #FILE
       location: '../../test/schemas/*.graphql'
       meta_file: './metadata.json'
       intro: |
-        Welcome to the **GraphQL Demo** pages. This *intro* is mainly a demo of adoc elements.
-
-        [source,http]
-        .API ENDPOINT
-        ----
-        POST https://somehost.com/graphql
-        ----
+        Welcome to the **GraphQL Demo** pages.
 content:
   sources:
     - url: ../../../..

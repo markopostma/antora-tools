@@ -1,7 +1,7 @@
 import type { AntoraFile, AntoraPage, ComponentDescriptor } from '@antora/content-classifier';
 import type * as graphql from 'graphql';
 import type { ServiceContainer } from './classes/service-container';
-import type { ParsedIntrospection, Task } from './interfaces';
+import type { Config, ParsedIntrospection, Task } from './interfaces';
 import type * as services from './services';
 
 export type AdocLiteral = `${string}.adoc`;
@@ -34,4 +34,9 @@ export type CollectedData = {
 export type Validation = {
   valid: boolean;
   message: string;
+  expected: any;
+  actual: any;
 };
+export type MultiConfig = { components: Config[] } | Config;
+const _uselessVar = typeof (1 as any);
+export type Typeof = typeof _uselessVar;

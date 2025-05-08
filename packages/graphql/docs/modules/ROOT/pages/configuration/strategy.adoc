@@ -1,0 +1,23 @@
+= Strategy
+
+Currently `<<_file>>`, `<<_url>>` and `<<_introspection>>` are supported strategies.
+
+== `FILE`
+
+Apply this strategy when a GraphQL schema is accessible locally. Expects a _relative_ path to one or more schema files. For example:
+
+- `./relative-path-to/schema.graphql`
+- `./relative-path-to/*.graphql`
+
+== `URL`
+
+Apply this strategy when a GraphQL schema is accessible remotely via **HTTP** by POST or GET. Expects an _URL_ to an endpoint that serves a `.graphql` file. For example:
+
+- `https://somehost.com/schema.graphql`
+- `https://somehost.com/schema`
+
+== `INTROSPECTION`
+
+Apply this strategy when a GraphQL endpoint is accessible remotely via **HTTP** by POST or GET. Expects an _URL_ to a GraphQL endpoint. For example:
+
+- `https://somehost.com/graphql`

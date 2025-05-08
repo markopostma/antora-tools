@@ -15,7 +15,3 @@ export interface Config {
   logLevel: LogLevel;
   ignore: Array<string | RegExp>;
 }
-
-export interface MultiConfig {
-  components: Config[];
-}

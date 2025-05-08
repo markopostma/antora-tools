@@ -1,0 +1,76 @@
+= Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on link:https://keepachangelog.com/en/1.1.0/[Keep a Changelog,window=_blank], and this project adheres to link:https://semver.org/spec/v2.0.0.html[Semantic Versioning,window=_blank].
+
+== [0.10.0] - UNRELEASED
+
+=== Changed
+
+- `fields`, `inputFields` and `arguments` marked as deprecated will display the return type.
+
+=== Removed
+
+- Removed `config.include_styles`.
+
+
+== [0.9.0] - 2025-04-22
+
+=== Added
+
+- Support for "multi-config" to register multiple components simultaneously.
+
+=== Removed
+
+- Removed redundant `config.api_endpoint`. Use `config.intro` if you want to add asciidoc text to the index page.
+
+== [0.8.0] - 2025-04-14
+
+From now on installing this package is as simple as `npm i @antora-tools/graphql`.
+
+=== Changed
+
+- Moved `fields` and `input-fields` partials up in type templates.
+- Deprecated fields are now included in code examples.
+
+=== Fixed
+
+- Output return type for types with nested non nullables, for example `[Model!]!` and `[Model!]`, are now printed correctly.
+
+=== Removed
+
+* Removed dependencies:
+** `@graphql-tools/load`
+** `@graphql-tools/graphql-file-loader`
+** `@graphql-tools/url-loader`
+
+== [0.7.0] - 2025-04-07
+
+=== Added
+
+* Added `config.locale` configuration.
+** Support for English (`en`).
+** Support for Dutch (`nl`).
+** Support for German (`de`).
+** Support for Spanish (`es`).
+* Support for template localization using `LOCALE` in the metafile.
+
+== [0.6.0] - 2025-03-17
+
+=== Added
+
+- Added `config.meta_file` configuration.
+
+== [0.5.0] - 2025-03-02
+
+=== Added
+
+- Code examples in `json` format inside type templates.
+- Code examples in `graphql` format inside query, mutation and subscription templates.
+
+== [0.4.0] - 2025-02-02
+
+=== Added
+
+- Support for `directives`.

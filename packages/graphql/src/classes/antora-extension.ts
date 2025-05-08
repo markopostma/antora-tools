@@ -15,7 +15,7 @@ export class AntoraExtension {
   readonly config: Config;
 
   constructor(
-    context: SiteGenerator.GeneratorContext,
+    readonly context: SiteGenerator.GeneratorContext,
     variables: SiteGenerator.LifeCycleVariables<'register'>,
   ) {
     this.services = new ServiceContainer(variables.config as Config);
@@ -23,12 +23,12 @@ export class AntoraExtension {
 
     this
       // Hook all tasks to the corresponding events.
-      .hook('beforeProcess', context, beforeProcess.map(this.createTask.bind(this)))
-      .hook('contentClassified', context, contentClassified.map(this.createTask.bind(this)))
-      .hook('navigationBuilt', context, navigationBuilt.map(this.createTask.bind(this)));
+      .hook('beforeProcess', beforeProcess.map(this.createTask.bind(this)))
+      .hook('contentClassified', contentClassified.map(this.createTask.bind(this)))
+      .hook('navigationBuilt', navigationBuilt.map(this.createTask.bind(this)));
 
     // Shall not be triggered when a task fails, but will be manually called.
-    context.once(
+    this.context.once(
       'pagesComposed',
       this.logger.logResults.bind(
         this.logger,
@@ -40,18 +40,14 @@ export class AntoraExtension {
     this.logger.trace('Registered %s for %s', EXTENSION_NAME, this.config.name);
   }
 
-  private hook(
-    event: SiteGenerator.EventName,
-    context: SiteGenerator.GeneratorContext,
-    tasks: Task[],
-  ) {
+  private hook(event: SiteGenerator.EventName, tasks: Task[]) {
     this.logger.trace(`Hook event ${event}`);
     this.tasks.push(...tasks);
 
-    context.once(event, async (variables: SiteGenerator.ContextVariables) => {
+    this.context.once(event, async (variables: SiteGenerator.ContextVariables) => {
       this.logger.trace(`Event ${event} triggered`);
 
-      for (const task of tasks) await this.runTask(task, context, variables);
+      for (const task of tasks) await this.runTask(task, this.context, variables);
     });
 
     return this;

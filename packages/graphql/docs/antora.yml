@@ -1,8 +1,8 @@
 name: antora-tools-graphql
-title: Antora tools GraphQL docs
+title: '@antora-tools/graphql'
 start_page: index.adoc
 version: ~
-display_version: 0.9.0
+display_version: 0.10.0
 asciidoc:
   attributes:
     page-pagination: '@'

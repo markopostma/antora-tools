@@ -6,8 +6,7 @@ This is a monorepo containing multiple Antora extensions and tools.
 
 ### `@antora-tools/graphql`
 
-![@antora-tools/graphql TEST](https://github.com/markopostma/antora-tools/actions/workflows/graphql-test.yml/badge.svg?branch=main)
-![@antora-tools/graphql E2E](https://github.com/markopostma/antora-tools/actions/workflows/graphql-e2e.yml/badge.svg?branch=main)
+![](https://github.com/markopostma/antora-tools/actions/workflows/graphql-test.yml/badge.svg?branch=main) ![](https://github.com/markopostma/antora-tools/actions/workflows/graphql-e2e.yml/badge.svg?branch=main)
 
 The Antora GraphQL Extension transforms your GraphQL schema or introspection query into clear, navigable, and beautifully integrated API docs—right inside your Antora site.
 
@@ -28,12 +27,12 @@ This project uses `esbuild` to transpile TypeScript code into JavaScript to make
 ### Install
 
 ```bash
-npm install # or npm i
+npm ci
 ```
 
 ### Scripts
 
-The root `package.json` defines some scripts:
+The root `package.json` defines some common scripts:
 
 ```json
 {

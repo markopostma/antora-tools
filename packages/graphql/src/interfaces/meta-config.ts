@@ -20,7 +20,7 @@ export interface MetaInputObject {
   inputFields?: NamedMeta<MetaField>;
 }
 
-export interface MetaFile {
+export interface MetaConfig {
   ENUM?: NamedMeta<{ documentation?: MetaDocumentation }>;
   INPUT_OBJECT?: NamedMeta<MetaInputObject>;
   INTERFACE?: NamedMeta<MetaObject>;

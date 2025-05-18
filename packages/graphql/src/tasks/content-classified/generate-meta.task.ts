@@ -1,3 +1,4 @@
+import { ContentCatalog } from '@antora/content-classifier';
 import { BaseTask } from '../../bases/base-task';
 import { MetaGenerator } from '../../classes/meta-generator';
 import { QueryGenerator } from '../../classes/query-generator';
@@ -5,10 +6,10 @@ import type { ParsedIntrospection } from '../../interfaces';
 import type { CollectedData } from '../../types';
 
 export class GenerateMetaTask extends BaseTask<
-  'beforeProcess',
+  'contentClassified',
   { introspection: ParsedIntrospection }
 > {
-  async handle(_: any, data: CollectedData) {
+  async handle(variables: { contentCatalog: ContentCatalog }, data: CollectedData) {
     return {
       introspection: {
         ...data.introspection,

@@ -1,7 +1,7 @@
 import { BaseService } from '../bases/base-service';
 import { DEFAULT_CONFIG } from '../constants';
 import { Locale } from '../enums';
-import type { Config, LocaleData, MetaFile } from '../interfaces';
+import type { Config, LocaleData, MetaConfig } from '../interfaces';
 import { ObjectUtil } from '../utils';
 import * as locales from './locales';
 import { LoggerService } from './logger-service';
@@ -13,7 +13,7 @@ export class TranslateService extends BaseService {
   constructor(
     readonly config: Config,
     readonly logger: LoggerService,
-    readonly metaFile?: MetaFile,
+    readonly metaFile?: MetaConfig,
   ) {
     super(config);
 

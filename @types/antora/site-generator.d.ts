@@ -46,7 +46,7 @@ declare module '@antora/site-generator' {
   export type SiteAsciiDocConfig = Readonly<Record<string, any>>;
   export type SiteCatalog = Readonly<Record<string, any>>;
   export type Publications = Readonly<Record<string, any>>;
-  export type ContentAggregate = typeof import('@antora/content-aggregator');
+  export type ContentAggregate = any[];
 
   /**
    * Based on the official documentation provided by Antora:

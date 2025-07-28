@@ -10,6 +10,8 @@ declare module '@antora/content-classifier' {
     prerelease?: boolean | string;
     startPage?: boolean | string;
     asciidoc?: Record<string, any>;
+    ext?: Record<string, any>;
+    files: AntoraFile[];
   }
 
   interface FileDescriptor {
@@ -43,6 +45,7 @@ declare module '@antora/content-classifier' {
       extname: string;
       stem: string;
       mediaType: string;
+      path: string;
     };
     out: {
       dirname: string;

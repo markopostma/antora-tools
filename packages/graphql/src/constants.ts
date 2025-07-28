@@ -3,7 +3,8 @@ import { MIMEType } from 'node:util';
 import { Locale, LogLevel } from './enums';
 import type { Config } from './interfaces';
 
-export const EXTENSION_NAME = '@antora-tools/graphql' as const;
+export const EXTENSION_NPM = '@antora-tools/graphql' as const;
+export const EXTENSION_CAMELIZED = 'antoraToolsGraphql' as const;
 
 export const DEFAULT_CONFIG = Object.freeze({
   name: 'graphql',

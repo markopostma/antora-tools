@@ -1,0 +1,13 @@
+site:
+  title: Integration test
+  start_page: e2e-project::index.adoc
+antora:
+  extensions:
+    - require: '@antora-tools/graphql'
+content:
+  sources:
+    - url: ../../../..
+      start_path: packages/graphql/e2e/project/docs
+ui:
+  bundle:
+    url: ./ui-bundle.zip

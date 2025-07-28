@@ -4,12 +4,12 @@ import { AntoraExtension } from '../../src/classes/antora-extension';
 import { DEFAULT_CONFIG } from '../../src/constants';
 import { Strategy, TaskStatus } from '../../src/enums';
 import { Config } from '../../src/interfaces';
-import { GenerateMetaTask } from '../../src/tasks/before-process/generate-meta.task';
 import { IntrospectionTask } from '../../src/tasks/before-process/introspection.task';
 import { ValidateTask } from '../../src/tasks/before-process/validate.task';
 import { AddAttachmentsTask } from '../../src/tasks/content-classified/add-attachments.task';
 import { AddPagesTask } from '../../src/tasks/content-classified/add-pages.task';
 import { CreateComponentTask } from '../../src/tasks/content-classified/create-component.task';
+import { GenerateMetaTask } from '../../src/tasks/content-classified/generate-meta.task';
 import { AttachResultsTask } from '../../src/tasks/navigation-built/attach-results.task';
 import { NavigationTask } from '../../src/tasks/navigation-built/navigation.task';
 import { TaskConstructor } from '../../src/types';
@@ -19,7 +19,7 @@ describe('class AntoraExtension', () => {
   let context: GeneratorContext;
   let extension: AntoraExtension;
 
-  describe('by default when LOCAL', () => {
+  describe('FILE', () => {
     const config = ObjectUtil.deepMerge<Config>(DEFAULT_CONFIG, {
       strategy: Strategy.File,
       location: '',

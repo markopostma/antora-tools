@@ -1,4 +1,3 @@
-import { ContentCatalog } from '@antora/content-classifier';
 import { BaseTask } from '../../bases/base-task';
 import { MetaGenerator } from '../../classes/meta-generator';
 import { QueryGenerator } from '../../classes/query-generator';
@@ -9,7 +8,7 @@ export class GenerateMetaTask extends BaseTask<
   'contentClassified',
   { introspection: ParsedIntrospection }
 > {
-  async handle(variables: { contentCatalog: ContentCatalog }, data: CollectedData) {
+  async handle(_: unknown, data: CollectedData) {
     return {
       introspection: {
         ...data.introspection,
@@ -21,7 +20,7 @@ export class GenerateMetaTask extends BaseTask<
 
   private handleTypes(introspection: ParsedIntrospection) {
     const { microfiber } = introspection;
-    const generator = new MetaGenerator(microfiber, this.services.meta.getMetaFile());
+    const generator = new MetaGenerator(microfiber, this.services.meta.metaConfig ?? {});
 
     return {
       types: introspection.types.map((type) => ({

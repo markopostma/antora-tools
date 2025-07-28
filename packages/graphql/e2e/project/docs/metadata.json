@@ -1,0 +1,13 @@
+{
+  "OBJECT": {
+    "Capsule": {
+      "fields": {
+        "landings": {
+          "documentation": {
+            "example": 1337
+          }
+        }
+      }
+    }
+  }
+}

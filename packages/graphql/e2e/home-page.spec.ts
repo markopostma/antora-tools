@@ -1,5 +1,4 @@
 import { expect, Locator, Page, test } from '@playwright/test';
-import { DEFAULT_CONFIG } from '../src/constants';
 import { Strategy } from '../src/enums';
 
 test.describe('home page', async () => {
@@ -109,11 +108,11 @@ test.describe('home page', async () => {
       });
 
       test('document <title>', async () => {
-        await expect(visited).toHaveTitle(new RegExp(DEFAULT_CONFIG.title));
+        await expect(visited).toHaveTitle('GraphQL (file) :: Integration test');
       });
 
       test('<h1>', async () => {
-        await expect(visited.locator('h1')).toHaveText(DEFAULT_CONFIG.title);
+        await expect(visited.locator('h1')).toHaveText('GraphQL (file)');
       });
 
       if (description) {

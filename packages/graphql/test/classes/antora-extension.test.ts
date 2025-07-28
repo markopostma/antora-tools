@@ -81,8 +81,9 @@ describe('class AntoraExtension', () => {
           for (const spy of spies) {
             const task = instances[spies.indexOf(spy)];
 
-            expect(spy).toHaveBeenCalledTimes(1);
+            console.log(task.name, task.state.status);
             expect(task.state.status).toEqual(TaskStatus.Success);
+            expect(spy).toHaveBeenCalledTimes(1);
           }
         });
       });

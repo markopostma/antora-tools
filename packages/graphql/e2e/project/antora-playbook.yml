@@ -1,6 +1,6 @@
 site:
   title: Integration test
-  start_page: e2e-project::index.adoc
+  start_page: graphql::index.adoc
 antora:
   extensions:
     - require: '@antora-tools/graphql'

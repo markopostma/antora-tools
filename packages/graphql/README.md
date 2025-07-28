@@ -21,8 +21,6 @@ npm install @antora-tools/graphql
 antora:
   extensions:
     - require: '@antora-tools/graphql'
-      strategy: <Strategy>
-      location: <String>
 ```
 
 Or you can supply multiple configurations, for example:
@@ -42,7 +40,7 @@ antora:
 
 Currently `FILE`, `URL` and `INTROSPECTION` are supported. To determine a strategy:
 
-1. Use **`FILE`** when a GraphQL schema is accessible locally. Expects a _relative_ path to one or more schema files. For example: `./relative-path-to/schema.graphql` or `./relative-path-to/*.graphql`.
+1. Use **`FILE`** when a GraphQL schema is accessible locally. Expects a _relative_ path to one or more schema files. Example: `./relative-path-to/schema.graphql` or `./relative-path-to/*.graphql`.
 2. Use **`URL`** when a GraphQL schema is accessible remotely via **HTTP** by POST or GET. Expects an _URL_ to an endpoint that serves a `.graphql` file. For example: `https://somehost.com/schema.graphql` or `https://somehost.com/schema`.
 3. Use **`INTROSPECTION`** when a GraphQL endpoint is accessible remotely via **HTTP** by POST or GET. Expects an _URL_ to a GraphQL endpoint. For example: `https://somehost.com/graphql`.
 
@@ -194,9 +192,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### [0.10.0] - UNRELEASED
 
-#### Removed
+#### Changed
 
-- Removed support for option `FILE` for `config.strategy`.
+- Support for configuration on playbook level has been dropped.
 
 ### [0.9.0] - 2025-04-22
 

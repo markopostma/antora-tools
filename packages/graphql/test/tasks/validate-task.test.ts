@@ -2,11 +2,11 @@ import { BaseTask } from '../../src/bases/base-task';
 import { ServiceContainer } from '../../src/classes/service-container';
 import { DEFAULT_CONFIG } from '../../src/constants';
 import { LogLevel } from '../../src/enums';
-import { Config } from '../../src/interfaces';
+import type { Config, MetaConfig } from '../../src/interfaces';
 import { ValidateTask } from '../../src/tasks/before-process/validate.task';
 
 describe('ValidateTask', () => {
-  const services = new ServiceContainer({ ...DEFAULT_CONFIG } as any as Config);
+  const services = new ServiceContainer({ ...DEFAULT_CONFIG } as any as Config, {} as MetaConfig);
 
   it('creates', () => {
     const task = new ValidateTask({} as Config, services);

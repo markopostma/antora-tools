@@ -1,11 +1,11 @@
 import { IntrospectionType } from 'graphql';
 import { BaseTask } from '../../src/bases/base-task';
 import { ServiceContainer } from '../../src/classes/service-container';
-import { Config } from '../../src/interfaces';
+import type { Config, MetaConfig } from '../../src/interfaces';
 import { IntrospectionTask } from '../../src/tasks/before-process/introspection.task';
 
 describe('IntrospectionTask', () => {
-  const services = new ServiceContainer({} as any);
+  const services = new ServiceContainer({} as any, {} as MetaConfig);
 
   it('it creates', () => {
     const task = new IntrospectionTask({} as Config, services);

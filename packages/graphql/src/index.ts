@@ -21,8 +21,6 @@ async function forContent(
   components
     .filter(({ ext }) => !!ext && EXTENSION_CAMELIZED in ext)
     .map((content) => {
-      console.log(content.files.map((file) => file.path));
-
       return loadMultiConfig(content.ext![EXTENSION_CAMELIZED]).map(
         (config) =>
           [

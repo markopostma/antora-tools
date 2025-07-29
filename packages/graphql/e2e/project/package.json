@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "prebuild": "npx rimraf ./build",
-    "build": "npx antora playbook.file.yml",
+    "build": "npx antora antora-playbook.yml",
     "preserve": "npm run build --silent",
     "serve": "npx http-server ./build/site"
   },

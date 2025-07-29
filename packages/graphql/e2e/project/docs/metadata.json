@@ -1,0 +1,22 @@
+{
+  "OBJECT": {
+    "User": {
+      "fields": {
+        "id": {
+          "documentation": {
+            "example": "1337"
+          }
+        }
+      }
+    },
+    "Capsule": {
+      "fields": {
+        "landings": {
+          "documentation": {
+            "example": 1337
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,10 +5,10 @@ import type { ParsedIntrospection } from '../../interfaces';
 import type { CollectedData } from '../../types';
 
 export class GenerateMetaTask extends BaseTask<
-  'beforeProcess',
+  'contentClassified',
   { introspection: ParsedIntrospection }
 > {
-  async handle(_: any, data: CollectedData) {
+  async handle(_: unknown, data: CollectedData) {
     return {
       introspection: {
         ...data.introspection,
@@ -19,8 +19,8 @@ export class GenerateMetaTask extends BaseTask<
   }
 
   private handleTypes(introspection: ParsedIntrospection) {
-    const { microfiber } = introspection;
-    const generator = new MetaGenerator(microfiber, this.services.meta.getMetaFile());
+    const { microfiber } = introspection ?? {};
+    const generator = new MetaGenerator(microfiber, this.services.meta.metaConfig ?? {});
 
     return {
       types: introspection.types.map((type) => ({
@@ -35,9 +35,9 @@ export class GenerateMetaTask extends BaseTask<
     const { queries, mutations, subscriptions, microfiber } = introspection;
     const generator = new QueryGenerator(microfiber);
     const collections = [
-      { fields: queries, id: 'query' },
-      { fields: mutations, id: 'mutation' },
-      { fields: subscriptions, id: 'subscription' },
+      { fields: queries ?? [], id: 'query' },
+      { fields: mutations ?? [], id: 'mutation' },
+      { fields: subscriptions ?? [], id: 'subscription' },
     ] as const;
 
     collections.forEach(({ fields, id }) => {

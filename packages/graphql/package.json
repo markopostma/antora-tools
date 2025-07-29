@@ -1,22 +1,30 @@
 {
   "name": "@antora-tools/graphql",
   "description": "An Antora extension to generate static schema information.",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "main": "./lib/index.js",
   "license": "MIT",
   "author": {
     "name": "Marko Postma",
     "url": "https://github.com/markopostma"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markopostma/antora-tools.git",
+    "directory": "packages/graphql"
+  },
+  "bugs": {
+    "url": "https://github.com/markopostma/antora-tools/issues"
+  },
   "scripts": {
     "build": "tsx ../../scripts/build.ts",
     "clean": "npx rimraf ./lib",
     "lint": "npx eslint ./src ./test ./e2e/*.spec.ts --quiet",
     "test:e2e": "npx playwright test",
-    "test": "npx jest --testPathPattern=test/",
+    "test": "npx jest --testPathPatterns=test/",
     "serve": "tsx scripts/serve.ts",
-    "serve:all": "tsx scripts/serve.ts --playbook playbook.all.yml",
-    "prepublishOnly": "npm run lint && npm run clean && npm run build"
+    "prepublishOnly": "npm run lint && npm run clean && npm run build",
+    "watch": "tsx ../../scripts/build.ts -w"
   },
   "files": [
     "./lib/*",

@@ -99,7 +99,7 @@ class Serve {
         },
         playbook: {
           type: 'string',
-          default: 'playbook.file.yml',
+          default: 'antora-playbook.yml',
           multiple: false,
         },
       },

@@ -1,6 +1,6 @@
 import * as graphql from 'graphql';
 import { type Microfiber } from 'microfiber';
-import type { MetaField, MetaFile, MetaInputObject, MetaObject } from '../interfaces';
+import type { MetaConfig, MetaField, MetaInputObject, MetaObject } from '../interfaces';
 import { GraphQLUtil, StringUtil } from '../utils';
 
 export class MetaGenerator {
@@ -16,7 +16,7 @@ export class MetaGenerator {
 
   constructor(
     readonly microfiber: Microfiber,
-    readonly metaFile: MetaFile = {},
+    readonly metaFile: MetaConfig = {},
   ) {}
 
   json(type: graphql.IntrospectionType) {

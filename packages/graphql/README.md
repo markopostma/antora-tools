@@ -15,34 +15,45 @@ Visit [this url](https://markopostma.github.io/antora-docs/graphql-demo) for a d
 npm install @antora-tools/graphql
 ```
 
-### Enable
+### Enable in your playbook
 
 ```yml
 antora:
   extensions:
     - require: '@antora-tools/graphql'
-      strategy: <Strategy>
-      location: <String>
 ```
 
-Or you can supply multiple configurations, for example:
+### Configure in antora.yml
+
+Single component configuration:
 
 ```yml
-antora:
-  extensions:
-    - require: '@antora-tools/graphql'
-      components:
-        - strategy: FILE
-          location: 'my-types.graphql'
-        - strategy: INTROSPECTION
-          location: 'https://host.com/graphql'
+name: your-content-source
+title: Your content source
+version: ~
+ext:
+  antora_tools_graphql:
+    strategy: FILE
+    location: 'schemas/*.graphql'
+```
+
+Or you can supply multiple configurations:
+
+```yml
+ext:
+  antora_tools_graphql:
+    components:
+      - strategy: FILE
+        location: 'schemas/*.graphql'
+      - strategy: INTROSPECTION
+        location: 'https://somehost.com/graphql'
 ```
 
 ### Determine a strategy
 
 Currently `FILE`, `URL` and `INTROSPECTION` are supported. To determine a strategy:
 
-1. Use **`FILE`** when a GraphQL schema is accessible locally. Expects a _relative_ path to one or more schema files. For example: `./relative-path-to/schema.graphql` or `./relative-path-to/*.graphql`.
+1. Use **`FILE`** when a GraphQL schema is accessible locally. Expects a _relative_ path to one or more schema files. Example: `./relative-path-to/schema.graphql` or `./relative-path-to/*.graphql`.
 2. Use **`URL`** when a GraphQL schema is accessible remotely via **HTTP** by POST or GET. Expects an _URL_ to an endpoint that serves a `.graphql` file. For example: `https://somehost.com/schema.graphql` or `https://somehost.com/schema`.
 3. Use **`INTROSPECTION`** when a GraphQL endpoint is accessible remotely via **HTTP** by POST or GET. Expects an _URL_ to a GraphQL endpoint. For example: `https://somehost.com/graphql`.
 
@@ -183,71 +194,3 @@ Initially also run:
 ```bash
 npx playwright install --with-deps chromium
 ```
-
----
-
-## Changelog
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-### [0.9.0] - 2025-04-22
-
-#### Added
-
-- Support for "multi-config" to register multiple components simultaneously.
-
-#### Removed
-
-- Removed redundant `config.api_endpoint`. Use `config.intro` if you want to add asciidoc text to the index page.
-
-### [0.8.0] - 2025-04-14
-
-From now on installing this package is as simple as `npm i @antora-tools/graphql`.
-
-#### Changed
-
-- Moved `fields` and `input-fields` partials up in type templates.
-- Deprecated fields are now included in code examples.
-
-#### Fixed
-
-- Output return type for types with nested non nullables, for example `[Model!]!` and `[Model!]`, are now printed correctly.
-
-#### Removed
-
-- Removed dependencies:
-  - `@graphql-tools/load`
-  - `@graphql-tools/graphql-file-loader`
-  - `@graphql-tools/url-loader`
-
-### [0.7.0] - 2025-04-07
-
-#### Added
-
-- Support for `locale` configuration.
-- Support for template localization using `LOCALE` in the metafile.
-- Support for `en` locale.
-- Support for `nl` locale.
-- Support for `de` locale.
-- Support for `es` locale.
-
-### [0.6.0] - 2025-03-17
-
-#### Added
-
-- Support for `meta_file` configuration.
-
-### [0.5.0] - 2025-03-02
-
-#### Added
-
-- Code examples in `json` format inside type templates.
-- Code examples in `graphql` format inside query, mutation and subscription templates.
-
-### [0.4.0] - 2025-02-02
-
-#### Added
-
-- Support for `directives`.

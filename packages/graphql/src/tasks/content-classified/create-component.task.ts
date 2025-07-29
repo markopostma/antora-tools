@@ -11,9 +11,7 @@ export class CreateComponentTask extends BaseTask<
 
     // Check whether a component already exists with the given name, if so throw Error.
     if (component) {
-      throw new Error(
-        `Component '${this.config.name}' already defined, therefor using the existing component.`,
-      );
+      throw new Error(`Component name '${this.config.name}' already in use.`);
     }
 
     // If the component does not exist register a new component with info provided in the config.

@@ -3,7 +3,7 @@ import { loadSchema } from '@graphql-tools/load';
 import * as graphql from 'graphql';
 import { Microfiber } from 'microfiber';
 import { MetaGenerator } from '../../src/classes/meta-generator';
-import type { MetaFile } from '../../src/interfaces';
+import type { MetaConfig } from '../../src/interfaces';
 
 describe('class MetaGenerator', () => {
   let introspectionQuery: graphql.IntrospectionQuery;
@@ -72,7 +72,7 @@ describe('class MetaGenerator', () => {
             },
           },
         },
-      } satisfies MetaFile;
+      } satisfies MetaConfig;
 
       beforeEach(() => {
         generator = new MetaGenerator(microfiber, meta);
@@ -131,7 +131,7 @@ describe('class MetaGenerator', () => {
             },
           },
         },
-      } satisfies MetaFile;
+      } satisfies MetaConfig;
 
       beforeEach(() => {
         generator = new MetaGenerator(microfiber, meta);
@@ -169,7 +169,7 @@ describe('class MetaGenerator', () => {
           },
         },
       },
-    } satisfies MetaFile;
+    } satisfies MetaConfig;
 
     beforeEach(() => {
       generator = new MetaGenerator(microfiber, meta);

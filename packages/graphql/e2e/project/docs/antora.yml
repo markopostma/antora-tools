@@ -1,0 +1,31 @@
+name: e2e-project
+title: End 2 end project
+version: ~
+ext:
+  antora_tools_graphql:
+    components:
+      - title: GraphQL (file)
+        strategy: FILE
+        location: '../../test/schemas/*.graphql'
+        meta_file: metadata.json
+        intro: |
+          Welcome to the **GraphQL Demo** pages. This *intro* is mainly a demo of **adoc elements**.
+
+          [source,http]
+          .API ENDPOINT
+          ----
+          POST https://somehost.com/graphql
+          ----
+      - name: graphql-introspection
+        title: GraphQL (introspection)
+        strategy: INTROSPECTION
+        location: 'https://spacex-production.up.railway.app'
+        meta_file: metadata.json
+        intro: |
+          Welcome to the **GraphQL Demo** pages. This *intro* is mainly a demo of **adoc elements**.
+
+          [source,http]
+          .API ENDPOINT
+          ----
+          POST https://somehost.com/graphql
+          ----

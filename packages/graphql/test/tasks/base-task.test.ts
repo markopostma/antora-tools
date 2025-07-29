@@ -1,9 +1,10 @@
 import { BaseTask } from '../../src/bases/base-task';
 import { ServiceContainer } from '../../src/classes/service-container';
 import { TaskStatus } from '../../src/enums';
+import type { MetaConfig } from '../../src/interfaces';
 
 describe('BaseTask', () => {
-  const services = new ServiceContainer({} as any);
+  const services = new ServiceContainer({} as any, {} as MetaConfig);
   class TestTask extends BaseTask {
     async handle() {
       return;

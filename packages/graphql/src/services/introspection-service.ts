@@ -3,14 +3,14 @@ import { Microfiber } from 'microfiber';
 import { readFile } from 'node:fs/promises';
 import { RequestOptions } from 'node:https';
 import { BaseService } from '../bases/base-service';
-import { EXTENSION_NAME, MIME_TYPES } from '../constants';
+import { EXTENSION_NPM, MIME_TYPES } from '../constants';
 import { Strategy } from '../enums';
 import type { Config } from '../interfaces';
 import { GraphQLUtil } from '../utils';
 
 export class IntrospectionService extends BaseService {
   readonly HEADERS = {
-    'user-agent': EXTENSION_NAME,
+    'user-agent': EXTENSION_NPM,
     'content-type': MIME_TYPES.text,
   } as const satisfies RequestOptions['headers'];
 

@@ -1,17 +1,20 @@
-import type { Config, Service, ServiceConstructor } from '../interfaces';
+import type { Config, MetaConfig, Service, ServiceConstructor } from '../interfaces';
 import {
   IntrospectionService,
   LoggerService,
-  MetaService,
   TemplateService,
   TranslateService,
 } from '../services';
 import type { Services } from '../types';
+import { MetaService } from './meta-file';
 
 export class ServiceContainer {
   readonly #map = new Map<keyof Services, Service>();
 
-  constructor(private readonly config: Config) {
+  constructor(
+    private readonly config: Config,
+    private readonly metaConfig: MetaConfig,
+  ) {
     this.initialize();
   }
 
@@ -41,9 +44,9 @@ export class ServiceContainer {
 
   private initialize() {
     const logger = this.factory(LoggerService, this.config);
-    const meta = this.factory(MetaService, this.config, logger);
+    const meta = this.factory(MetaService, this.config, this.metaConfig);
     const introspection = this.factory(IntrospectionService, this.config);
-    const translate = this.factory(TranslateService, this.config, logger, meta.getMetaFile());
+    const translate = this.factory(TranslateService, this.config, logger, this.metaConfig);
     const template = this.factory(TemplateService, this.config, translate);
 
     [logger, introspection, meta, translate, template].forEach((service) => {

@@ -4,14 +4,7 @@ import { AntoraExtension } from '../../src/classes/antora-extension';
 import { DEFAULT_CONFIG } from '../../src/constants';
 import { Strategy, TaskStatus } from '../../src/enums';
 import { Config } from '../../src/interfaces';
-import { IntrospectionTask } from '../../src/tasks/before-process/introspection.task';
-import { ValidateTask } from '../../src/tasks/before-process/validate.task';
-import { AddAttachmentsTask } from '../../src/tasks/content-classified/add-attachments.task';
-import { AddPagesTask } from '../../src/tasks/content-classified/add-pages.task';
-import { CreateComponentTask } from '../../src/tasks/content-classified/create-component.task';
-import { GenerateMetaTask } from '../../src/tasks/content-classified/generate-meta.task';
-import { AttachResultsTask } from '../../src/tasks/navigation-built/attach-results.task';
-import { NavigationTask } from '../../src/tasks/navigation-built/navigation.task';
+import * as Tasks from '../../src/tasks';
 import { TaskConstructor } from '../../src/types';
 import { ObjectUtil } from '../../src/utils';
 
@@ -56,22 +49,22 @@ describe('class AntoraExtension', () => {
     describe.each([
       {
         event: 'beforeProcess',
-        tasks: [ValidateTask, IntrospectionTask, GenerateMetaTask],
+        tasks: Tasks.beforeProcess,
       },
       {
         event: 'contentClassified',
-        tasks: [CreateComponentTask, AddPagesTask, AddAttachmentsTask],
+        tasks: Tasks.contentClassified,
       },
       {
         event: 'navigationBuilt',
-        tasks: [NavigationTask, AttachResultsTask],
+        tasks: Tasks.navigationBuilt,
       },
     ] as const)('event emits', ({ event, tasks }) => {
       describe(event, () => {
         it('runs all tasks successfully', async () => {
           const instances = tasks.map(findTask);
           const spies = instances.map((i) =>
-            jest.spyOn(i, 'handle').mockImplementation(async () => ({})),
+            jest.spyOn(i, 'handle').mockImplementation(async () => {}),
           );
 
           context.emit(event);
@@ -81,7 +74,6 @@ describe('class AntoraExtension', () => {
           for (const spy of spies) {
             const task = instances[spies.indexOf(spy)];
 
-            console.log(task.name, task.state.status);
             expect(task.state.status).toEqual(TaskStatus.Success);
             expect(spy).toHaveBeenCalledTimes(1);
           }

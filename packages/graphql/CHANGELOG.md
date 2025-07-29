@@ -8,7 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- Support for configuration on playbook level has been dropped.
+- Support for configuration on playbook level has been dropped in favor of configuration on content-source level.
+
+### Removed
+
+- Dropped support for setting a component as `start_page`.
 
 ## [0.9.0] - 2025-04-22
 

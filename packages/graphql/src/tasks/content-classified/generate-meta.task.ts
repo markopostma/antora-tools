@@ -1,4 +1,3 @@
-import { IntrospectionType } from 'graphql';
 import { BaseTask } from '../../bases/base-task';
 import { MetaGenerator } from '../../classes/meta-generator';
 import { QueryGenerator } from '../../classes/query-generator';
@@ -20,10 +19,6 @@ export class GenerateMetaTask extends BaseTask<
   }
 
   private handleTypes(introspection: ParsedIntrospection) {
-    if (!introspection || !Array.isArray(introspection.types)) {
-      return { types: [] as IntrospectionType[] };
-    }
-
     const { microfiber } = introspection ?? {};
     const generator = new MetaGenerator(microfiber, this.services.meta.metaConfig ?? {});
 
@@ -37,7 +32,7 @@ export class GenerateMetaTask extends BaseTask<
   }
 
   private handleOperations(introspection: ParsedIntrospection) {
-    const { queries, mutations, subscriptions, microfiber } = introspection || {};
+    const { queries, mutations, subscriptions, microfiber } = introspection;
     const generator = new QueryGenerator(microfiber);
     const collections = [
       { fields: queries ?? [], id: 'query' },

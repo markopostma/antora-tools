@@ -71,7 +71,7 @@ describe('class AntoraExtension', () => {
         it('runs all tasks successfully', async () => {
           const instances = tasks.map(findTask);
           const spies = instances.map((i) =>
-            jest.spyOn(i, 'handle').mockImplementation(async () => {}),
+            jest.spyOn(i, 'handle').mockImplementation(async () => ({})),
           );
 
           context.emit(event);

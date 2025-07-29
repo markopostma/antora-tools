@@ -15,7 +15,7 @@ Visit [this url](https://markopostma.github.io/antora-docs/graphql-demo) for a d
 npm install @antora-tools/graphql
 ```
 
-### Enable
+### Enable in your playbook
 
 ```yml
 antora:
@@ -23,17 +23,30 @@ antora:
     - require: '@antora-tools/graphql'
 ```
 
-Or you can supply multiple configurations, for example:
+### Configure in antora.yml
+
+Single component configuration:
 
 ```yml
-antora:
-  extensions:
-    - require: '@antora-tools/graphql'
-      components:
-        - strategy: FILE
-          location: 'my-types.graphql'
-        - strategy: INTROSPECTION
-          location: 'https://host.com/graphql'
+name: your-content-source
+title: Your content source
+version: ~
+ext:
+  antora_tools_graphql:
+    strategy: FILE
+    location: 'schemas/*.graphql'
+```
+
+Or you can supply multiple configurations:
+
+```yml
+ext:
+  antora_tools_graphql:
+    components:
+      - strategy: FILE
+        location: 'schemas/*.graphql'
+      - strategy: INTROSPECTION
+        location: 'https://somehost.com/graphql'
 ```
 
 ### Determine a strategy

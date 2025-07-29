@@ -1,6 +1,5 @@
 name: e2e-project
 title: End 2 end project
-hidden: true
 version: ~
 ext:
   antora_tools_graphql:
